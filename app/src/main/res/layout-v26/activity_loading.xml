@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingTop="18dp"
+    android:paddingBottom="18dp"
+    android:background="@color/black">
+
+
+    <TextView
+        android:textSize="50dp"
+        android:fontStyle="normal"
+        android:font="@font/nanum_barun_gothic_bold"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rehabili"
+        android:layout_marginTop="150dp"/>
+
+    <TextView
+        android:textSize="20dp"
+        android:fontStyle="normal"
+        android:font="@font/nanum_barun_gothic"
+        android:textColor="@color/gray"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Rehabili"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:textSize="15dp"
+        android:fontStyle="normal"
+        android:font="@font/nanum_myeongjo"
+        android:textColor="@color/gray"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="재활 운동 어플리케이션 Rehabili 에 어서오세요." />
+
+
+</LinearLayout>
