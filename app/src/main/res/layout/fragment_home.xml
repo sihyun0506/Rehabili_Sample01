@@ -6,22 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+
     <Button
         android:id="@+id/btn_1"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:backgroundTint="@color/white"
+        android:drawableRight="@drawable/ic_arm"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
-        android:paddingBottom="-10dp"
         android:text="팔"
-        android:textSize="25dp"
-        android:textAlignment="viewStart"
         android:textColor="@color/black"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="start" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_2"
@@ -29,18 +30,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
+        android:drawableRight="@drawable/ic_neck"
+        android:gravity="center_vertical"
         android:paddingStart="50dp"
-        android:paddingEnd="30dp"
+        android:paddingLeft="50dp"
+        android:paddingEnd="35dp"
+        android:paddingRight="30dp"
         android:text="목"
-        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_1"
         app:layout_constraintStart_toStartOf="@+id/btn_1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_1"
-        android:paddingLeft="50dp"
-        android:paddingRight="30dp"
-        android:gravity="start" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_1" />
 
     <Button
         android:id="@+id/btn_3"
@@ -50,14 +51,15 @@
         android:backgroundTint="@color/white"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
+        android:drawableRight="@drawable/ic_shoulder"
         android:text="어깨"
-        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_2"
-        android:gravity="start" />
+        android:gravity="center_vertical"
+        />
 
     <Button
         android:id="@+id/btn_4"
@@ -67,14 +69,15 @@
         android:backgroundTint="@color/white"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
+        android:drawableRight="@drawable/ic_waist"
         android:text="허리"
-        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_3"
-        android:gravity="start" />
+        android:gravity="center_vertical"
+        />
 
     <Button
         android:id="@+id/btn_5"
@@ -84,14 +87,15 @@
         android:backgroundTint="@color/white"
         android:paddingStart="50dp"
         android:paddingEnd="50dp"
+        android:drawableRight="@drawable/ic_leg"
         android:text="다리"
-        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_4"
-        android:gravity="start" />
+        android:gravity="center_vertical"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
