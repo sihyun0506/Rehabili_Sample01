@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Menu</string>
     <string name="title_notifications">Option</string>
+    <string name="fixText">Guest01</string>
 </resources>
