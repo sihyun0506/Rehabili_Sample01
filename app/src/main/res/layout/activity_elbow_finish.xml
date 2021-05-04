@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/restartButton"
@@ -63,7 +63,6 @@
         android:id="@+id/goalNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="goal"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +87,6 @@
         android:id="@+id/goalNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="goal"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +127,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441"
-        app:srcCompat="@drawable/firework" />
+        app:layout_constraintVertical_bias="0.304"
+        app:srcCompat="@raw/firework" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

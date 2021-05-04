@@ -3,6 +3,7 @@ package com.example.rehabili_sample1.ui.arm.elbow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.ArmActivity;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import static java.lang.Math.atan;
 
@@ -146,7 +148,6 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                         mVib.vibrate(1500);
                         sleep(1600);
                         mVib.vibrate(1500);
-                        sleep(1400);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -200,6 +201,12 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
     }
 
+    // 뒤로가기 방지
+    @Override
+    public void onBackPressed() {
+        
+    }
+
     //-----------센서 동작------------
     public void startSensor() {
         //가속도 센서 이벤트를 시작
@@ -231,11 +238,11 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                 minArk = 20;
                 break;
             case "Lv 4":
-                maxArk = 90;
+                maxArk = 80;
                 minArk = 10;
                 break;
             case "Lv 5":
-                maxArk = 100;
+                maxArk = 85;
                 minArk = 00;
                 break;
             default:

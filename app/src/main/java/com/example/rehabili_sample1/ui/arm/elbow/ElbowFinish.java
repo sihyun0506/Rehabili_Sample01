@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.ArmActivity;
+import com.example.rehabili_sample1.ui.home.HomeFragment;
 
 public class ElbowFinish extends AppCompatActivity {
 
@@ -28,14 +31,18 @@ public class ElbowFinish extends AppCompatActivity {
         exerciseType = findViewById(R.id.exerciseType);
         goalNumber1 = findViewById(R.id.goalNumber1);
         goalNumber2 = findViewById(R.id.goalNumber2);
+        ImageView imageView = findViewById(R.id.imageView);
+        Glide.with(this).load(R.raw.firework).into(imageView);
 
         Intent intent = getIntent();
         exerciseType.setText("팔꿈치 구부렸다 펴기");
-        String goalNumber1 = intent.getStringExtra("goalNumber");
-        String goalNumber2 = intent.getStringExtra("goalNumber");
+        String goalNumber = intent.getStringExtra("goalNumber");
 
-        Button restartButton = (Button)findViewById(R.id.restartButton);
-        Button homeButton = (Button)findViewById(R.id.homeButton);
+        goalNumber1.setText(goalNumber);
+        goalNumber2.setText(goalNumber);
+
+        Button restartButton = (Button) findViewById(R.id.restartButton);
+        Button homeButton = (Button) findViewById(R.id.homeButton);
 
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
