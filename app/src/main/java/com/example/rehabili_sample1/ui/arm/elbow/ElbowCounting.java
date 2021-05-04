@@ -3,6 +3,7 @@ package com.example.rehabili_sample1.ui.arm.elbow;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.R;
+import com.example.rehabili_sample1.ui.arm.ArmActivity;
 
 import static java.lang.Math.atan;
 
@@ -49,6 +51,10 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
+
+        Intent intent = getIntent();
+        goalNumber = intent.getStringExtra("goalNumber");
+        level = intent.getStringExtra("level");
 
         //진동기능 발생기의 핸들을 구해서 멤버변수에 저장
         mVib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -145,9 +151,16 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                // 다음 액티비티 ElbowFinish 로 이동
+                Intent intent = new Intent(ElbowCounting.this, ElbowFinish.class);
+                intent.putExtra("goalNumber", goalNumber);
+                startActivity(intent);
             }
         };
+
         thread.start();
+
     }
 
     private Handler handler = new Handler() {
