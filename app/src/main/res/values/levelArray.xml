@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level">
+        <item>Lv 1</item>
+        <item>Lv 2</item>
+        <item>Lv 3</item>
+        <item>Lv 4</item>
+        <item>Lv 5</item>
+    </string-array>
+</resources>
