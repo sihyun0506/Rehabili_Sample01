@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_rehabili_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
-        <activity android:name=".ui.arm.ArmActivity"></activity>
-        <!-- loading screen -->
+        <activity android:name=".ui.arm.elbow.ElbowActivity"></activity>
+        <activity android:name=".ui.arm.ArmActivity" /> <!-- loading screen -->
         <activity
             android:name=".ui.first_loading.LoadingActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- main -->
