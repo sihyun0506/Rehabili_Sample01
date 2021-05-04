@@ -3,7 +3,6 @@
     package="com.example.rehabili_sample1">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -13,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_rehabili_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
-        <activity android:name=".ui.arm.elbow.ElbowFinish"></activity>
+        <activity android:name=".ui.arm.elbow.ElbowSet"></activity>
+        <activity android:name=".ui.arm.elbow.ElbowFinish" />
         <activity android:name=".ui.arm.elbow.ElbowCounting" />
         <activity android:name=".ui.arm.elbow.ElbowActivity" />
         <activity android:name=".ui.arm.ArmActivity" /> <!-- loading screen -->
