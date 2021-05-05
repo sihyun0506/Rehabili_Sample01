@@ -1,5 +1,6 @@
 package com.example.rehabili_sample1.ui.arm.elbow;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -257,4 +258,5 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         if (Gy < -15 || Gy > 15)
             mVib.vibrate(1);
     }
+    
 }

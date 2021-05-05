@@ -18,16 +18,20 @@
         <activity android:name=".ui.arm.elbow.ElbowActivity" />
         <activity android:name=".ui.arm.ArmActivity" /> <!-- loading screen -->
         <activity
-            android:name=".ui.first_loading.LoadingActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" /> <!-- main -->
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name="com.example.rehabili_sample1.ui.first_loading.LoadingActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> <!-- main -->
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+
         </activity>
     </application>
 
