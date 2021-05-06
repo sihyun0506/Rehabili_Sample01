@@ -1,7 +1,7 @@
 package com.example.rehabili_sample1.ui.dashboard;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -95,7 +95,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void show() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
         builder.setTitle("재활기록 삭제");
         builder.setMessage("재활기록을 삭제하시겠습니까? 복구되지 않습니다.");
         builder.setPositiveButton("예",
@@ -110,9 +110,7 @@ public class DashboardFragment extends Fragment {
                         Toast.makeText(getActivity(),"아니오를 선택했습니다.",Toast.LENGTH_LONG).show();
                     }
                 });
-
-        builder.show();
-        final AlertDialog dialog = builder.create();
+        AlertDialog dialog = builder.create();
         dialog.setOnShowListener( new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface arg0) {
@@ -120,6 +118,8 @@ public class DashboardFragment extends Fragment {
                 dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
             }
         });
+        builder.show();
+
     }
 
     @Override
