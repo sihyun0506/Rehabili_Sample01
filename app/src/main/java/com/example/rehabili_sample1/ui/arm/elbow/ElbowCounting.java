@@ -63,11 +63,6 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         mVib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         //센서관리자 핸들을 구한다.(센서관리자는 new로 생성하지 않고 시스템에서 빌려옴)
         mSensorMgr = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         // 운동 강도 설정
         setArk(level);
