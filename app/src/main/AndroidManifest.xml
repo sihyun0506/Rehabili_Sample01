@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_rehabili_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
-        <activity android:name=".ui.arm.elbow.ElbowSet"></activity>
+        <activity android:name=".ui.arm.elbow.ElbowSet" />
         <activity android:name=".ui.arm.elbow.ElbowFinish" />
         <activity android:name=".ui.arm.elbow.ElbowCounting" />
         <activity android:name=".ui.arm.elbow.ElbowActivity" />
