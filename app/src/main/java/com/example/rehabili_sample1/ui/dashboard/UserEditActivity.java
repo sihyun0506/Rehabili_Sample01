@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
@@ -38,6 +39,10 @@ public class UserEditActivity extends AppCompatActivity {
                 age = editAge.getText().toString();
                 weight = editWeight.getText().toString();
                 height = editHeight.getText().toString();
+                if(id.equals("")||name.equals("")){
+                    Toast.makeText(UserEditActivity.this, "ID와 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent();
                 intent.putExtra("sign",true);
                 setResult(RESULT_OK,intent);

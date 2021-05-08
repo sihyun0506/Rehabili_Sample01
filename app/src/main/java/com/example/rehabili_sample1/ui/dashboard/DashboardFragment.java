@@ -31,7 +31,7 @@ import com.example.rehabili_sample1.ui.arm.ArmActivity;
 public class DashboardFragment extends Fragment {
     String shared = "file";
     private DashboardViewModel dashboardViewModel;
-    Button editerButton, removeButton;
+    Button editerButton, appInfoButton;
     String id, name, age, weight, height;
     View root;
     TextView textView1, textView2, textView3, textView4, textView5;
@@ -51,6 +51,17 @@ public class DashboardFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(shared, 0);
+
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        if (id==null) {
+//            editor.putString("id", "Guest01");
+//            editor.commit();
+//        }
+//        if (name==null) {
+//            editor.putString("name", "재활이");
+//            editor.commit();
+//        }
+
         id = sharedPreferences.getString("id", "");
         name = sharedPreferences.getString("name", "");
         age = sharedPreferences.getString("age", "");
@@ -63,11 +74,17 @@ public class DashboardFragment extends Fragment {
         textView4 = root.findViewById(R.id.Weight);
         textView5 = root.findViewById(R.id.Height);
 
-        if (id != "") textView1.setText(id);
-        if (name != "") textView2.setText(name);
-        if (age != "") textView3.setText(age);
-        if (weight != "") textView4.setText(weight);
-        if (height != "") textView5.setText(height);
+        // if 문 삭제 필요
+        if (id != "")
+            textView1.setText(id);
+        if (name != "")
+            textView2.setText(name);
+        if (age != "")
+            textView3.setText(age);
+        if (weight != "")
+            textView4.setText(weight);
+        if (height != "")
+            textView5.setText(height);
 
 
         editerButton = root.findViewById(R.id.edit_user);
@@ -95,6 +112,17 @@ public class DashboardFragment extends Fragment {
             }
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(shared, 0);
+
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            if (id==null) {
+//                editor.putString("id", "Guest");
+//                editor.commit();
+//            }
+//            if (name==null) {
+//                editor.putString("name", "재활이");
+//                editor.commit();
+//            }
+
             id = sharedPreferences.getString("id", "");
             name = sharedPreferences.getString("name", "");
             age = sharedPreferences.getString("age", "");
@@ -107,11 +135,17 @@ public class DashboardFragment extends Fragment {
             textView4 = root.findViewById(R.id.Weight);
             textView5 = root.findViewById(R.id.Height);
 
-            if (id != "") textView1.setText(id);
-            if (name != "") textView2.setText(name);
-            if (age != "") textView3.setText(age);
-            if (weight != "") textView4.setText(weight);
-            if (height != "") textView5.setText(height);
+            // 수정 필요. if문 삭제, 입력시 조건 부여.
+            if (id.equals(""))
+                textView1.setText(id);
+            if (name != "")
+                textView2.setText(name);
+            if (age != "")
+                textView3.setText(age);
+            if (weight != "")
+                textView4.setText(weight);
+            if (height != "")
+                textView5.setText(height);
         }
     }
 //    @Override

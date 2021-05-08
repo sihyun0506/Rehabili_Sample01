@@ -1,6 +1,7 @@
 package com.example.rehabili_sample1.ui.notifications;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -26,8 +27,7 @@ import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener {
 
-    String name = "Guest01";
-
+    String name;
     ArrayAdapter<String> arrayAdapter;
     static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
@@ -74,6 +74,12 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("file", 0);
+        name = sharedPreferences.getString("name", "");
+        if(name.equals("")){
+            name="재활이";
+        }
 
         TextView userName = (TextView) root.findViewById(R.id.userName);
         userName.setText(name + "님의 재활 기록입니다.");
