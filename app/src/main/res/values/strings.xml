@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Rehabili</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Menu</string>
-    <string name="title_notifications">Option</string>
+    <string name="title_home">Menu</string>
+    <string name="title_dashboard">User</string>
+    <string name="title_notifications">History</string>
     <string name="fixText">Guest01</string>
     <string name="elbow">팔꿈치 구부렸다 펴기</string>
     <string name="elbow_text">몬헌은 재미있다 ㅇㅇ</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_info">사용자 정보</string>
+    <string name="history">재활 기록 확인</string>
+    <string name="main_page">메인으로 이동</string>
+    <string name="app_info">앱 정보</string>
 </resources>

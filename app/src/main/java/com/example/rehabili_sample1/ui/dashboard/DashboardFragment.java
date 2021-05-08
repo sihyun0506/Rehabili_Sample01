@@ -24,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.rehabili_sample1.Appinfo;
 import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.ArmActivity;
@@ -95,7 +96,14 @@ public class DashboardFragment extends Fragment {
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
-
+        appInfoButton = root.findViewById(R.id.appInfo);
+        appInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Appinfo.class);
+                startActivity(intent);
+            }
+        });
 
         return root;
 

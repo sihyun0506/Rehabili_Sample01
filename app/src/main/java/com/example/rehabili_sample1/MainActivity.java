@@ -8,12 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.example.rehabili_sample1.ui.dashboard.DashboardFragment;
 import com.example.rehabili_sample1.ui.first_loading.LoadingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     boolean sign = true;
     String shared = "file";
     DashboardFragment dashboardFragment;
+    NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,17 +54,37 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.option_user_info:
+                navController.navigate(R.id.navigation_dashboard);
+                return true;
+            case R.id.option_main_page:
+                navController.navigate(R.id.navigation_home);
+                return true;
+            case R.id.option_history:
+                navController.navigate(R.id.navigation_notifications);
+                return true;
+            case R.id.option_app_info:
+                Intent intent = new Intent(MainActivity.this, Appinfo.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -72,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         String value = "";
         editor.putString("key",value);
         editor.commit();
-
     }
 
 }

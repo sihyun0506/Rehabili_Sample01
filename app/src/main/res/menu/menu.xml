@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu  xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_btn1"
-        android:title="@string/fixText"
-        app:showAsAction="always" />
+    <item
+        android:id="@+id/option_user_info"
+        android:title="@string/user_info"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_main_page"
+        android:title="@string/main_page"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_history"
+        android:title="@string/history"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_app_info"
+        android:title="@string/app_info"
+        app:showAsAction="never" />
+
+
 </menu>
