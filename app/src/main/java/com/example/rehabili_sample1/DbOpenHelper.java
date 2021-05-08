@@ -65,7 +65,7 @@ public class DbOpenHelper {
     }
 
     // 데이터 삽입
-    public long insertColumn(String datetime, String type, int level, int times) {
+    public long insertColumn(String datetime, String type, String level, int times) {
         ContentValues values = new ContentValues();
         values.put(DataBases.CreateDB.DATETIME, datetime);
         values.put(DataBases.CreateDB.TYPE, type);

@@ -17,9 +17,13 @@ import android.os.Vibrator;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.rehabili_sample1.DbOpenHelper;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.ArmActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static java.lang.Math.atan;
 
@@ -41,6 +45,9 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
     // ElbowSet에서 받아올 값 2.
     public String level;
+
+    // ElbowSet에서 받아올 값 3.
+    public String type = "팔 구부렸다 펴기";
 
     private double maxArk = 90;
     private double minArk = 00;
@@ -149,6 +156,9 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                     e.printStackTrace();
                 }
 
+                // DB에 운동기록 입력
+                insertDB(type, level, goal);
+
                 // 다음 액티비티 ElbowFinish 로 이동
                 Intent intent = new Intent(ElbowCounting.this, ElbowFinish.class);
                 intent.putExtra("goalNumber", goalNumber);
@@ -200,7 +210,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // 뒤로가기 방지
     @Override
     public void onBackPressed() {
-        
+
     }
 
     //-----------센서 동작------------
@@ -253,5 +263,26 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         if (Gy < -15 || Gy > 15)
             mVib.vibrate(1);
     }
-    
+
+    // 현재 시간 생성
+    public String genDateTime() {
+        long mNow = System.currentTimeMillis();
+        Date mDate = new Date(mNow);
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        return mFormat.format(mDate);
+    }
+
+    // db에 값을 넣어줌
+    public boolean insertDB(String type, String level, int goal) {
+        boolean flag = true;
+        DbOpenHelper mDbOpenHelper = new DbOpenHelper(this);
+        mDbOpenHelper.open();
+        mDbOpenHelper.create();
+
+        String dateTime = genDateTime();
+        mDbOpenHelper.open();
+        mDbOpenHelper.insertColumn(dateTime, type, level, goal);
+
+        return flag;
+    }
 }

@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.arm.elbow.ElbowSet">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
+        android:id="@+id/exerciseType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="팔꿈치 구부렸다 펴기"
+        android:text="exerciseType"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
