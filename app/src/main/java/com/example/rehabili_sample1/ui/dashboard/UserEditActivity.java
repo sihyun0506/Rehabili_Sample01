@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,6 +42,9 @@ public class UserEditActivity extends AppCompatActivity {
                 height = editHeight.getText().toString();
                 if(id.equals("")||name.equals("")){
                     Toast.makeText(UserEditActivity.this, "ID와 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    // ---------- 키보드 내리기 ----------
+                    InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     return;
                 }
                 Intent intent = new Intent();
