@@ -1,7 +1,9 @@
 package com.example.rehabili_sample1.ui.dashboard;
 
 import android.app.Activity;
+
 import androidx.appcompat.app.AlertDialog;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +31,7 @@ import com.example.rehabili_sample1.ui.arm.ArmActivity;
 public class DashboardFragment extends Fragment {
     String shared = "file";
     private DashboardViewModel dashboardViewModel;
-    Button editerButton ,removeButton;
+    Button editerButton, removeButton;
     String id, name, age, weight, height;
     View root;
     TextView textView1, textView2, textView3, textView4, textView5;
@@ -61,11 +63,11 @@ public class DashboardFragment extends Fragment {
         textView4 = root.findViewById(R.id.Weight);
         textView5 = root.findViewById(R.id.Height);
 
-        if(id != "")textView1.setText(id);
-        if(name != "")textView2.setText(name);
-        if(age != "")textView3.setText(age);
-        if(weight != "")textView4.setText(weight);
-        if(height != "")textView5.setText(height);
+        if (id != "") textView1.setText(id);
+        if (name != "") textView2.setText(name);
+        if (age != "") textView3.setText(age);
+        if (weight != "") textView4.setText(weight);
+        if (height != "") textView5.setText(height);
 
 
         editerButton = root.findViewById(R.id.edit_user);
@@ -73,54 +75,15 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), UserEditActivity.class);
-                startActivityForResult(intent,REQUEST_CODE);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
-        removeButton = root.findViewById(R.id.remove);
-        removeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                show();
-
-            }
-        });
-
-
-
-
 
 
         return root;
 
     }
 
-    private void show() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
-        builder.setTitle("재활기록 삭제");
-        builder.setMessage("재활기록을 삭제하시겠습니까? 복구되지 않습니다.");
-        builder.setPositiveButton("예",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(),"예를 선택했습니다.",Toast.LENGTH_LONG).show();
-                    }
-                });
-        builder.setNegativeButton("아니오",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(),"아니오를 선택했습니다.",Toast.LENGTH_LONG).show();
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.setOnShowListener( new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface arg0) {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-            }
-        });
-        builder.show();
-
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -144,11 +107,11 @@ public class DashboardFragment extends Fragment {
             textView4 = root.findViewById(R.id.Weight);
             textView5 = root.findViewById(R.id.Height);
 
-            if(id != "")textView1.setText(id);
-            if(name != "")textView2.setText(name);
-            if(age != "")textView3.setText(age);
-            if(weight != "")textView4.setText(weight);
-            if(height != "")textView5.setText(height);
+            if (id != "") textView1.setText(id);
+            if (name != "") textView2.setText(name);
+            if (age != "") textView3.setText(age);
+            if (weight != "") textView4.setText(weight);
+            if (height != "") textView5.setText(height);
         }
     }
 //    @Override

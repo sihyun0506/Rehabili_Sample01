@@ -1,6 +1,8 @@
 package com.example.rehabili_sample1.ui.notifications;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,8 +26,9 @@ import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener {
 
-    ArrayAdapter<String> arrayAdapter;
+    String name = "Guest01";
 
+    ArrayAdapter<String> arrayAdapter;
     static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
     private DbOpenHelper mDbOpenHelper;
@@ -68,6 +74,11 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
+
+        TextView userName = (TextView) root.findViewById(R.id.userName);
+        userName.setText(name + "님의 재활 기록입니다.");
+        Button removeButton = (Button) root.findViewById(R.id.remove);
+        removeButton.setOnClickListener(this);
 
         Button datetimeSortButton = (Button) root.findViewById(R.id.datetimeSortButton);
         datetimeSortButton.setOnClickListener(this);
@@ -126,6 +137,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         return text;
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -144,6 +156,37 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             case R.id.timesSortButton:
                 showDatabase("times");
                 break;
+
+            case R.id.remove:
+                show();
         }
     }
+
+    private void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
+        builder.setTitle("재활기록 삭제");
+        builder.setMessage("재활기록을 삭제하시겠습니까? 복구되지 않습니다.");
+        builder.setPositiveButton("예",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        builder.setNegativeButton("아니오",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getActivity(), "아니오", Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+            }
+        });
+        builder.show();
+    }
+
 }

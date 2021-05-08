@@ -89,18 +89,17 @@
         app:layout_constraintTop_toBottomOf="@+id/Weight" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/remove"
+        android:id="@+id/appInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/arm_button"
-        android:text="    재활 기록 삭제    "
+        android:text="    애플리케이션 정보    "
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_user" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
