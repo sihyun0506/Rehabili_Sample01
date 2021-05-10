@@ -122,7 +122,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             while (count < countCheck) {
                                 sleep(100);
                                 warningVibrate();
-                                if (Gx > maxArk && Gy < 15 && Gy > -15) {
+                                if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >=0) {
                                     mVib.vibrate(300); // 진동
                                     count++;
                                 }
@@ -133,7 +133,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             while (count < countCheck) {
                                 sleep(100);
                                 warningVibrate();
-                                if (Gx < minArk && Gy < 15 && Gy > -15) {
+                                if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >=0) {
                                     mVib.vibrate(300); // 진동
                                     count++;
                                 }

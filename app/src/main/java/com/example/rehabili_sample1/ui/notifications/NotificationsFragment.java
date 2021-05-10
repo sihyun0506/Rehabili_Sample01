@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.rehabili_sample1.DbOpenHelper;
 import com.example.rehabili_sample1.R;
@@ -27,7 +29,10 @@ import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener {
 
+    NavController navController;
     String name;
+    // BD 오름/ 내림 차순 정렬을 위한 값
+    Boolean sign1 = true, sign2 = true, sign3 = true, sign4 = true;
     ArrayAdapter<String> arrayAdapter;
     static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
@@ -77,8 +82,8 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("file", 0);
         name = sharedPreferences.getString("name", "");
-        if(name.equals("")){
-            name="재활이";
+        if (name.equals("")) {
+            name = "재활이";
         }
 
         TextView userName = (TextView) root.findViewById(R.id.userName);
@@ -108,8 +113,35 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         return root;
     }
 
+    // DB 오름차순 정렬 후 출력
     public void showDatabase(String sort) {
-        Cursor iCursor = mDbOpenHelper.sortColumn(sort);
+        Cursor iCursor = mDbOpenHelper.sortColumnUp(sort);
+        Log.d("showDatabase", "DB Size: " + iCursor.getCount());
+        arrayData.clear();
+        arrayIndex.clear();
+        while (iCursor.moveToNext()) {
+            String tempIndex = iCursor.getString(iCursor.getColumnIndex("_id"));
+            String tempDatetime = iCursor.getString(iCursor.getColumnIndex("datetime"));
+            tempDatetime = setTextLength(tempDatetime, 10);
+            String tempType = iCursor.getString(iCursor.getColumnIndex("type"));
+            tempType = setTextLength(tempType, 10);
+            String tempLevel = iCursor.getString(iCursor.getColumnIndex("level"));
+            tempLevel = setTextLength(tempLevel, 10);
+            String tempTimes = iCursor.getString(iCursor.getColumnIndex("times"));
+            tempTimes = setTextLength(tempTimes, 10);
+
+            String Result = tempDatetime + tempType + tempLevel + tempTimes;
+            arrayData.add(Result);
+            arrayIndex.add(tempIndex);
+        }
+        arrayAdapter.clear();
+        arrayAdapter.addAll(arrayData);
+        arrayAdapter.notifyDataSetChanged();
+    }
+
+    // DB 내림차순 정렬 후 출력
+    public void showDatabaseDown(String sort) {
+        Cursor iCursor = mDbOpenHelper.sortColumnDown(sort);
         Log.d("showDatabase", "DB Size: " + iCursor.getCount());
         arrayData.clear();
         arrayIndex.clear();
@@ -148,34 +180,54 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.datetimeSortButton:
-                showDatabase("datetime");
+                if (sign1)
+                    showDatabase("datetime");
+                else
+                    showDatabaseDown("datetime");
+                sign1 = !sign1;
                 break;
 
             case R.id.typeSortButton:
-                showDatabase("type");
+                if (sign2)
+                    showDatabase("type");
+                else
+                    showDatabaseDown("type");
+                sign2 = !sign2;
                 break;
-
+                
             case R.id.levelSortButton:
-                showDatabase("level");
+                if (sign3)
+                    showDatabase("level");
+                else
+                    showDatabaseDown("level");
+                sign3 = !sign3;
                 break;
 
             case R.id.timesSortButton:
-                showDatabase("times");
+                if (sign4)
+                    showDatabase("times");
+                else
+                    showDatabaseDown("times");
+                sign4 = !sign4;
                 break;
 
             case R.id.remove:
                 show();
+//                showDatabase("datetime");
         }
     }
 
     private void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
         builder.setTitle("재활기록 삭제");
-        builder.setMessage("재활기록을 삭제하시겠습니까? 복구되지 않습니다.");
+        builder.setMessage("재활기록을 삭제하시겠습니까? \n모든 기록이 삭제됩니다.");
         builder.setPositiveButton("예",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        mDbOpenHelper.deleteAllColumns();
                         Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                        navController.navigate(R.id.navigation_notifications);
                     }
                 });
         builder.setNegativeButton("아니오",

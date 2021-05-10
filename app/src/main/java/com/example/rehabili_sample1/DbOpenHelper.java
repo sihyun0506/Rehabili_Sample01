@@ -74,9 +74,14 @@ public class DbOpenHelper {
         return mDB.insert(DataBases.CreateDB._TABLENAME0, null, values);
     }
 
-    // 데이터 정렬, 특정 Column을 기준으로 정렬
-    public Cursor sortColumn(String sort) {
-        Cursor c = mDB.rawQuery("SELECT * FROM History ORDER BY " + sort + ";", null);
+    // 데이터 정렬, 특정 Column을 기준으로 오름차순 정렬
+    public Cursor sortColumnUp(String sort) {
+        Cursor c = mDB.rawQuery("SELECT * FROM History ORDER BY " + sort + " ASC;", null);
+        return c;
+    }
+    // 데이터 정렬, 특정 Column을 기준으로 내림차순 정렬
+    public Cursor sortColumnDown(String sort) {
+        Cursor c = mDB.rawQuery("SELECT * FROM History ORDER BY " + sort + " DESC;", null);
         return c;
     }
 
