@@ -144,7 +144,7 @@ public class DashboardFragment extends Fragment {
             textView5 = root.findViewById(R.id.Height);
 
             // 수정 필요. if문 삭제, 입력시 조건 부여.
-            if (id.equals(""))
+            if (id != "")
                 textView1.setText(id);
             if (name != "")
                 textView2.setText(name);
