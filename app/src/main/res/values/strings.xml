@@ -5,13 +5,18 @@
     <string name="title_notifications">History</string>
     <string name="fixText">Guest01</string>
     <string name="elbow">팔꿈치 구부렸다 펴기</string>
-    <string name="elbow_text">몬헌은 재미있다 ㅇㅇ</string>
+    <string name="elbow_text">&#160;휴대폰을 영상과 같이 잡고 가능한 수평을 유지한 채로 팔을 움직여 주세요.\n
+        &#160;손목의 각도는 팔과 일직선을 유지하는 것이 좋습니다.\n\n
+        &#160;휴대폰이 수평이 아닐 시 약한 진동이 발생되며, 이때의 동작은 카운트 되지 않습니다.\n
+        &#160;카운트 시 진동이 발생되며, 왕복 1회에 1씩 카운트 됩니다.\n
+        &#160;단계가 높아질수록 카운트에 필요한 팔의 가동 각도가 더 커집니다.\n\n
+        &#160;목표달성 시 운동기록이 어플리케이션에 기록됩니다.</string>
     <string name="user_info">사용자 정보</string>
     <string name="history">재활 기록 확인</string>
     <string name="main_page">메인으로 이동</string>
     <string name="app_info">앱 정보</string>
     <string name="must">필수</string>
-    <string name="app_info_content">재활 도우미 어플리케이션입니다.
-        사용해주셔서 감사합니다.</string>
+    <string name="app_info_content">&#160;재활 도우미 어플리케이션입니다.\n
+        &#160;사용해주셔서 감사합니다.</string>
 
 </resources>

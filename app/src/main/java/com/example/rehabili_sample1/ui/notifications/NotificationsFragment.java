@@ -130,7 +130,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             String tempTimes = iCursor.getString(iCursor.getColumnIndex("times"));
             tempTimes = setTextLength(tempTimes, 10);
 
-            String Result = tempDatetime + tempType + tempLevel + tempTimes;
+            String Result = tempDatetime + "  " + tempType + " " + tempLevel + " " + tempTimes;
             arrayData.add(Result);
             arrayIndex.add(tempIndex);
         }
@@ -194,7 +194,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                     showDatabaseDown("type");
                 sign2 = !sign2;
                 break;
-                
+
             case R.id.levelSortButton:
                 if (sign3)
                     showDatabase("level");

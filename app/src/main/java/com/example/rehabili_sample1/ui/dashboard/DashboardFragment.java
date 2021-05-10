@@ -81,12 +81,17 @@ public class DashboardFragment extends Fragment {
         if (name != "")
             textView2.setText(name);
         if (age != "")
-            textView3.setText(age + "세");
+            textView3.setText("만 " + age + "세");
+        else
+            textView3.setText("");
         if (weight != "")
             textView4.setText(weight + "kg");
+        else
+            textView4.setText("");
         if (height != "")
             textView5.setText(height + "cm");
-
+        else
+            textView5.setText("");
 
         editerButton = root.findViewById(R.id.edit_user);
         editerButton.setOnClickListener(new View.OnClickListener() {
@@ -149,11 +154,17 @@ public class DashboardFragment extends Fragment {
             if (name != "")
                 textView2.setText(name);
             if (age != "")
-                textView3.setText(age + "세");
+                textView3.setText("만 " + age + "세");
+            else
+                textView3.setText("");
             if (weight != "")
                 textView4.setText(weight + "kg");
+            else
+                textView4.setText("");
             if (height != "")
                 textView5.setText(height + "cm");
+            else
+                textView5.setText("");
         }
     }
 //    @Override

@@ -12,7 +12,7 @@
         android:id="@+id/card_background"
         android:layout_width="350dp"
         android:layout_height="250dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:text="몸무게"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/card_background"
-        app:layout_constraintTop_toBottomOf="@+id/Height" />
+        app:layout_constraintTop_toBottomOf="@+id/Age" />
 
     <TextView
         android:id="@+id/Height"
@@ -85,15 +85,15 @@
         android:text="신장"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/card_background"
-        app:layout_constraintTop_toBottomOf="@+id/Age" />
+        app:layout_constraintTop_toBottomOf="@+id/Weight" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/arm_button"
-        android:text="    사용자 정보 수정    "
+        android:text="    사용자   정보   수정    "
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"

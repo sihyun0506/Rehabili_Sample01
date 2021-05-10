@@ -75,6 +75,7 @@
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:hint="@string/must"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -85,6 +86,7 @@
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:hint="@string/must"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editId" />
 
@@ -94,6 +96,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="76dp"
         android:inputType="number"
+        android:hint="만                    세"
+        android:gravity="end"
         android:layout_marginRight="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName" />
@@ -105,6 +109,7 @@
         android:layout_marginEnd="76dp"
         android:inputType="number"
         android:hint="kg"
+        android:gravity="end"
         android:layout_marginRight="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAge" />
@@ -116,6 +121,7 @@
         android:layout_marginEnd="76dp"
         android:inputType="number"
         android:hint="cm"
+        android:gravity="end"
         android:layout_marginRight="76dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editWeight" />
