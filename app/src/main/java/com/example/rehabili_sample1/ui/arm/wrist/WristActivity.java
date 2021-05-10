@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.arm.elbow;
+package com.example.rehabili_sample1.ui.arm.wrist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,7 @@ import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.Set;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ElbowActivity extends AppCompatActivity {
+public class WristActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
@@ -24,9 +24,9 @@ public class ElbowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elbow);
+        setContentView(R.layout.activity_wrist);
 
-        exerciseType = (TextView) findViewById(R.id.elbowText);
+        exerciseType = (TextView) findViewById(R.id.wristText);
         type = exerciseType.getText().toString();
 
         webView = (WebView) findViewById(R.id.webView);
@@ -34,12 +34,12 @@ public class ElbowActivity extends AppCompatActivity {
         webView.loadUrl(url);
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClientClass());
-        FloatingActionButton elbowNext = (FloatingActionButton)findViewById(R.id.nextElbow);
-        elbowNext.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton wristNext = (FloatingActionButton)findViewById(R.id.nextWrist);
+        wristNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // type 값을 가지고 다음 액티비티 Set으로 이동
-                Intent intent = new Intent(ElbowActivity.this, Set.class);
+                Intent intent = new Intent(WristActivity.this, Set.class);
                 intent.putExtra("type", type);
                 startActivity(intent);
             }

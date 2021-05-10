@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.elbow.ElbowActivity;
+import com.example.rehabili_sample1.ui.arm.wrist.WristActivity;
 
 public class ArmActivity extends AppCompatActivity {
 
@@ -18,14 +19,14 @@ public class ArmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arm);
 
-        Button wristButton = (Button)findViewById(R.id.wrist);
-        Button elbowButton = (Button)findViewById(R.id.elbow);
+        Button wristButton = (Button) findViewById(R.id.wrist);
+        Button elbowButton = (Button) findViewById(R.id.elbow);
         String non = "미구현 항목입니다.";
         wristButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ArmActivity.this, non , android.widget.Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(ArmActivity.this, WristActivity.class);
+                startActivity(intent);
             }
         });
         elbowButton.setOnClickListener(new View.OnClickListener() {

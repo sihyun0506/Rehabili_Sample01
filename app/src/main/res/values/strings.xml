@@ -11,6 +11,8 @@
         &#160;카운트 시 진동이 발생되며, 왕복 1회에 1씩 카운트 됩니다.\n
         &#160;단계가 높아질수록 카운트에 필요한 팔의 가동 각도가 더 커집니다.\n\n
         &#160;목표달성 시 운동기록이 어플리케이션에 기록됩니다.</string>
+    <string name="wrist">손목 돌리기</string>
+    <string name="wrist_text">&#160;손목돌리기 설명</string>
     <string name="user_info">사용자 정보</string>
     <string name="history">재활 기록 확인</string>
     <string name="main_page">메인으로 이동</string>

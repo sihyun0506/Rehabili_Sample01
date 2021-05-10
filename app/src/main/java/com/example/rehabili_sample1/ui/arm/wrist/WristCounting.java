@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.arm.elbow;
+package com.example.rehabili_sample1.ui.arm.wrist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +23,7 @@ import java.util.Date;
 
 import static java.lang.Math.atan;
 
-public class ElbowCounting extends AppCompatActivity implements SensorEventListener {
+public class WristCounting extends AppCompatActivity implements SensorEventListener {
 
     //모든종류의 센서가 제어가능한 센서관리자
     SensorManager mSensorMgr = null;
@@ -32,17 +32,17 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     int count = 0;
     private double Gx, Gy, Gz;
 
-    // ElbowSet에서 받아올 값 1.
+    // Set에서 받아올 값 1.
     public String goalNumber;
 
     private int goal;
     private TextView showGoalNumber;
     private TextView showCountNumber;
 
-    // ElbowSet에서 받아올 값 2.
+    // Set에서 받아올 값 2.
     public String level;
 
-    // ElbowSet에서 받아올 값 3.
+    // Set에서 받아올 값 3.
     public String type;
 
     private double maxArk = 90;
@@ -53,7 +53,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elbow_counting);
+        setContentView(R.layout.activity_wrist_counting);
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
@@ -74,7 +74,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
         count = 0;
         //------목표횟수 출력------
-        //goal number를 ElbowSet에서 받아와서 int로 바꿈
+        //goal number를 wristSet에서 받아와서 int로 바꿈
         goal = Integer.parseInt(goalNumber);
         // 예외처리 해줘야함, 입력이 없거나, 문자가 입력되면 앱이 강제종료됨.
         // -> onClick눌리기 전에 확인하고 toast로 "잘못된 입력입니다." 띄워야함.
@@ -155,8 +155,8 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                 // DB에 운동기록 입력
                 insertDB(type, level, goal);
 
-                // 다음 액티비티 ElbowFinish 로 이동 (type과 goal 전송)
-                Intent intent = new Intent(ElbowCounting.this, Finish.class);
+                // 다음 액티비티 Finish 로 이동 (type과 goal 전송)
+                Intent intent = new Intent(WristCounting.this, Finish.class);
                 intent.putExtra("type", type);
                 intent.putExtra("goalNumber", goalNumber);
                 startActivity(intent);

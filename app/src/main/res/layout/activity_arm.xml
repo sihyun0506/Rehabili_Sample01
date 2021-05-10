@@ -39,7 +39,7 @@
         android:layout_marginRight="68dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/arm_button"
-        android:text="    구부렸다 펴기    "
+        android:text="   팔 구부렸다 펴기    "
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/arm_zoom"
