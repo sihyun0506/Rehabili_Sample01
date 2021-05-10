@@ -156,7 +156,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             String tempTimes = iCursor.getString(iCursor.getColumnIndex("times"));
             tempTimes = setTextLength(tempTimes, 10);
 
-            String Result = tempDatetime + tempType + tempLevel + tempTimes;
+            String Result = tempDatetime + "  " + tempType + " " + tempLevel + " " + tempTimes;
             arrayData.add(Result);
             arrayIndex.add(tempIndex);
         }
