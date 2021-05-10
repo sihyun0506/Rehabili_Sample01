@@ -77,15 +77,15 @@ public class DashboardFragment extends Fragment {
 
         // if 문 삭제 필요
         if (id != "")
-            textView1.setText(id);
+            textView1.setText("ID : " + id);
         if (name != "")
             textView2.setText(name);
         if (age != "")
-            textView3.setText(age);
+            textView3.setText(age + "세");
         if (weight != "")
-            textView4.setText(weight);
+            textView4.setText(weight + "kg");
         if (height != "")
-            textView5.setText(height);
+            textView5.setText(height + "cm");
 
 
         editerButton = root.findViewById(R.id.edit_user);
@@ -145,15 +145,15 @@ public class DashboardFragment extends Fragment {
 
             // 수정 필요. if문 삭제, 입력시 조건 부여.
             if (id != "")
-                textView1.setText(id);
+                textView1.setText("ID : " + id);
             if (name != "")
                 textView2.setText(name);
             if (age != "")
-                textView3.setText(age);
+                textView3.setText(age + "세");
             if (weight != "")
-                textView4.setText(weight);
+                textView4.setText(weight + "kg");
             if (height != "")
-                textView5.setText(height);
+                textView5.setText(height + "cm");
         }
     }
 //    @Override

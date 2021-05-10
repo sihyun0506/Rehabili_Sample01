@@ -8,85 +8,97 @@
     android:tag="dashboard"
     android:id="@+id/dashboard">
 
+    <ImageView
+        android:id="@+id/card_background"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Rehabili"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_background"
+        app:layout_constraintStart_toStartOf="@+id/card_background"
+        app:layout_constraintTop_toTopOf="@+id/card_background" />
+
     <TextView
         android:id="@+id/Id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="68dp"
         android:text="Guest"
         android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+        app:layout_constraintStart_toStartOf="@+id/card_background"
+        app:layout_constraintTop_toTopOf="@+id/card_background" />
 
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="44dp"
         android:text="재활이"
         android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Id"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintBottom_toBottomOf="@+id/card_background"
+        app:layout_constraintStart_toStartOf="@+id/card_background" />
 
     <TextView
         android:id="@+id/Age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:text="나이"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
-        app:layout_constraintStart_toEndOf="@+id/Name"
-        app:layout_constraintTop_toBottomOf="@+id/Id"
-        app:layout_constraintVertical_bias="0.1" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_background"
+        app:layout_constraintTop_toTopOf="@+id/card_background" />
 
     <TextView
         android:id="@+id/Weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="64dp"
         android:text="몸무게"
-        android:textSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Age" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_background"
+        app:layout_constraintTop_toBottomOf="@+id/Height" />
 
     <TextView
         android:id="@+id/Height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="64dp"
         android:text="신장"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Weight"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_background"
         app:layout_constraintTop_toBottomOf="@+id/Age" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/arm_button"
         android:text="    사용자 정보 수정    "
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Weight" />
+        app:layout_constraintTop_toBottomOf="@+id/card_background" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/appInfo"
@@ -100,6 +112,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_user" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
