@@ -12,23 +12,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="9dp"
         android:text="Guest01"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/datetimeSortButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/remove"
-        android:layout_width="135dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="5dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
         android:text="재활 기록 삭제"
         android:textColor="@color/black"
-        android:textSize="15dp"
+        android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@+id/levelSortButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -46,7 +46,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/typeSortButton"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:background="@drawable/history_button_background"
@@ -57,11 +57,11 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@drawable/history_button_background"
         android:id="@+id/levelSortButton"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:background="@drawable/history_button_background"
         android:text="단계"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/typeSortButton"
@@ -70,7 +70,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:background="@drawable/history_button_background"
         android:id="@+id/timesSortButton"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="횟수"
