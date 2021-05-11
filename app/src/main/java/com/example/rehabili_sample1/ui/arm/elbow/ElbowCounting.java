@@ -265,7 +265,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     public String genDateTime() {
         long mNow = System.currentTimeMillis();
         Date mDate = new Date(mNow);
-        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return mFormat.format(mDate);
     }
 
@@ -278,6 +278,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
         String dateTime = genDateTime();
         mDbOpenHelper.open();
+        type = "팔 구부렸다 펴기";
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;
