@@ -32,17 +32,17 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     int count = 0;
     private double Gx, Gy, Gz;
 
-    // ElbowSet에서 받아올 값 1.
+    // Set에서 받아올 값 1.
     public String goalNumber;
 
     private int goal;
     private TextView showGoalNumber;
     private TextView showCountNumber;
 
-    // ElbowSet에서 받아올 값 2.
+    // Set에서 받아올 값 2.
     public String level;
 
-    // ElbowSet에서 받아올 값 3.
+    // Set에서 받아올 값 3.
     public String type;
 
     private double maxArk = 90;
@@ -76,9 +76,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         //------목표횟수 출력------
         //goal number를 ElbowSet에서 받아와서 int로 바꿈
         goal = Integer.parseInt(goalNumber);
-        // 예외처리 해줘야함, 입력이 없거나, 문자가 입력되면 앱이 강제종료됨.
-        // -> onClick눌리기 전에 확인하고 toast로 "잘못된 입력입니다." 띄워야함.
-        // xml에서 자연수만 입력받게 설정함
+        // 예외처리: xml에서 자연수만 입력받게 설정
 
         //받아온 goal 를 string형태로 showGoalNumber에서 출력
         showGoalNumber.setText(Integer.toString(goal));
@@ -182,14 +180,11 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         float v[] = event.values;
 
         switch (event.sensor.getType()) {
-            //가속도 센서 이벤트 일 때 X,Y,Z축 가속도값과 X,Y축의 기울기를 화면에 표시.
-            //나중에 삭제
             case Sensor.TYPE_ACCELEROMETER:
                 Gx = Math.toDegrees(atan(v[0] / Math.sqrt(v[1] * v[1] + v[2] * v[2])));
                 Gy = Math.toDegrees(atan(v[1] / Math.sqrt(v[0] * v[0] + v[2] * v[2])));
                 Gz = Math.toDegrees(atan(v[2] / Math.sqrt(v[0] * v[0] + v[1] * v[1])));
                 break;
-
             //자이로 센서 이벤트 일 때
             case Sensor.TYPE_GYROSCOPE:
 //                double roll = roll + v[0];

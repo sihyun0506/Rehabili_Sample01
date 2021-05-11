@@ -55,11 +55,11 @@ public class Set extends AppCompatActivity {
                 goalNumber = editText.getText().toString();
 
                 if (goalNumber.equals("") || Integer.parseInt(goalNumber) == 0) {
-                    Toast.makeText(Set.this, "올바른 값을 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Set.this, "목표 횟수를 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (Integer.parseInt(goalNumber) > 50) {
-                    Toast.makeText(Set.this, "50회 미만의 값을 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
+                if (Integer.parseInt(goalNumber) >= 50) {
+                    Toast.makeText(Set.this, "50회 이하의 값을 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     // type에 따라 Counting으로 값을 넘겨줌

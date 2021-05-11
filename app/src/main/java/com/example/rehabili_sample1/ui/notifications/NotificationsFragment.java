@@ -233,7 +233,6 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         builder.setNegativeButton("아니오",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(), "아니오", Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog dialog = builder.create();
