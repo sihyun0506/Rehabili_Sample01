@@ -7,7 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.rehabili_sample1.ui.History.HistoryFragment;
+import com.example.rehabili_sample1.ui.history.HistoryFragment;
 
 public class DbOpenHelper {
 

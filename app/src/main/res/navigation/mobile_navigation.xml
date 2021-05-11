@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_user"
-        android:name="com.example.rehabili_sample1.ui.dashboard.UserFragment"
+        android:name="com.example.rehabili_sample1.ui.user.UserFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_user" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.example.rehabili_sample1.ui.History.HistoryFragment"
+        android:name="com.example.rehabili_sample1.ui.history.HistoryFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_history" />
 </navigation>

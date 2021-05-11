@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.dashboard;
+package com.example.rehabili_sample1.ui.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
-
-import java.util.Set;
 
 public class UserEditActivity extends AppCompatActivity {
 

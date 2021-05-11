@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.UserFragment"
+    tools:context=".ui.user.UserFragment"
     android:tag="dashboard"
     android:id="@+id/dashboard">
 
@@ -80,10 +80,10 @@
             <ImageView
                 android:id="@+id/white_icon"
                 android:layout_width="53dp"
-                android:layout_height="73dp"
+                android:layout_height="75dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_launcher_rehabili_foreground" />
+                app:srcCompat="@drawable/rehabi_icon_white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

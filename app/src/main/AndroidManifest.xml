@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
         <activity android:name=".Appinfo"></activity>
-        <activity android:name=".ui.dashboard.UserEditActivity" />
+        <activity android:name=".ui.user.UserEditActivity" />
         <activity android:name=".ui.Set" />
         <activity android:name=".ui.Finish" />
         <activity android:name=".ui.arm.elbow.ElbowCounting" />

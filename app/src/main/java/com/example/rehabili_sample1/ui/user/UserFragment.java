@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.dashboard;
+package com.example.rehabili_sample1.ui.user;
 
 import android.app.Activity;
 
@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rehabili_sample1.Appinfo;
 import com.example.rehabili_sample1.R;
