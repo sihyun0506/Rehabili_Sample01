@@ -71,12 +71,10 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
 
      */
-    private NotificationsViewModel notificationsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_history, container, false);
 
 

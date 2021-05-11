@@ -23,7 +23,7 @@ import com.example.rehabili_sample1.R;
 
 public class UserFragment extends Fragment {
     String shared = "file";
-    private DashboardViewModel dashboardViewModel;
+
     Button editerButton, appInfoButton;
     String id, name, age, weight, height;
     View root;
@@ -37,9 +37,6 @@ public class UserFragment extends Fragment {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
         root = inflater.inflate(R.layout.fragment_user, container, false);
 
         super.onCreate(savedInstanceState);

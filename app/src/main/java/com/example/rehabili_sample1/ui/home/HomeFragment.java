@@ -21,12 +21,9 @@ import com.example.rehabili_sample1.ui.arm.ArmActivity;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         Button btn1 = (Button) root.findViewById(R.id.btn_1);
         Button btn2 = (Button) root.findViewById(R.id.btn_2);
