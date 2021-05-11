@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#FF888888</color>
+    <color name="sCard">#006e41</color>
 </resources>

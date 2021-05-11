@@ -8,58 +8,108 @@
     android:tag="dashboard"
     android:id="@+id/dashboard">
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/card_background"-->
+<!--        android:layout_width="360dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:src="@drawable/card_background"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_background"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/card_background"
+        android:background="@drawable/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Rehabili"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/card_background"
-        app:layout_constraintStart_toStartOf="@+id/card_background"
-        app:layout_constraintTop_toTopOf="@+id/card_background" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background_inner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="UnusedAttribute">
 
-    <TextView
-        android:id="@+id/Id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="68dp"
-        android:text="Guest"
-        android:textSize="40dp"
-        app:layout_constraintStart_toStartOf="@+id/card_background"
-        app:layout_constraintTop_toTopOf="@+id/card_background" />
+            <TextView
+                android:id="@+id/Id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginBottom="36dp"
+                android:text="Guest"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="44dp"
-        android:text="재활이"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/card_background"
-        app:layout_constraintStart_toStartOf="@+id/card_background" />
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="76dp"
+                android:text="재활이"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Rehabi"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/white_icon"
+                android:layout_width="53dp"
+                android:layout_height="73dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_rehabili_foreground" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Li"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/Age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginRight="28dp"
         android:text="나이"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/card_background"
         app:layout_constraintTop_toTopOf="@+id/card_background" />
 
@@ -68,10 +118,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginRight="64dp"
         android:text="몸무게"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/card_background"
         app:layout_constraintTop_toBottomOf="@+id/Age" />
 
@@ -80,10 +130,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginRight="64dp"
         android:text="신장"
-        android:textSize="25dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/card_background"
         app:layout_constraintTop_toBottomOf="@+id/Weight" />
 
@@ -112,9 +162,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_user" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
