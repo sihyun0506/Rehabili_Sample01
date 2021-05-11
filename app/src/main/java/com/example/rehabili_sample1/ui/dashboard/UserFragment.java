@@ -4,32 +4,24 @@ import android.app.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.rehabili_sample1.Appinfo;
-import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
-import com.example.rehabili_sample1.ui.arm.ArmActivity;
 
-public class DashboardFragment extends Fragment {
+public class UserFragment extends Fragment {
     String shared = "file";
     private DashboardViewModel dashboardViewModel;
     Button editerButton, appInfoButton;
@@ -48,7 +40,7 @@ public class DashboardFragment extends Fragment {
 
         dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
-        root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        root = inflater.inflate(R.layout.fragment_user, container, false);
 
         super.onCreate(savedInstanceState);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(shared, 0);

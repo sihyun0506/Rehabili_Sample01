@@ -7,8 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.rehabili_sample1.ui.notifications.NotificationsFragment;
-import com.example.rehabili_sample1.ui.notifications.NotificationsViewModel;
+import com.example.rehabili_sample1.ui.History.HistoryFragment;
 
 public class DbOpenHelper {
 
@@ -17,7 +16,7 @@ public class DbOpenHelper {
     public static SQLiteDatabase mDB;
     private DatabaseHelper mDBHelper;
     private Context mCtx;
-    private NotificationsFragment mNFrag;
+    private HistoryFragment mNFrag;
 
     private class DatabaseHelper extends SQLiteOpenHelper {
         // 생성자
@@ -39,7 +38,7 @@ public class DbOpenHelper {
         }
     }
 
-//    public DbOpenHelper(NotificationsFragment notificationsFragment) {
+//    public DbOpenHelper(HistoryFragment notificationsFragment) {
 //        this.mNFrag = notificationsFragment;
 //    }
 

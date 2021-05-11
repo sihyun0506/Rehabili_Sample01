@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.notifications;
+package com.example.rehabili_sample1.ui.History;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

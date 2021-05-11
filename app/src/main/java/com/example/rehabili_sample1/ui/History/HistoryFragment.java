@@ -1,4 +1,4 @@
-package com.example.rehabili_sample1.ui.notifications;
+package com.example.rehabili_sample1.ui.History;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -27,7 +27,7 @@ import com.example.rehabili_sample1.R;
 
 import java.util.ArrayList;
 
-public class NotificationsFragment extends Fragment implements View.OnClickListener {
+public class HistoryFragment extends Fragment implements View.OnClickListener {
 
     NavController navController;
     String name;
@@ -77,7 +77,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
                 new ViewModelProvider(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_history, container, false);
 
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("file", 0);
@@ -227,7 +227,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                         mDbOpenHelper.deleteAllColumns();
                         Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                        navController.navigate(R.id.navigation_notifications);
+                        navController.navigate(R.id.navigation_history);
                     }
                 });
         builder.setNegativeButton("아니오",

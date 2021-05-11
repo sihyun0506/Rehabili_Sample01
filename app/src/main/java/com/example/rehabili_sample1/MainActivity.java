@@ -1,27 +1,16 @@
 package com.example.rehabili_sample1;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 
-import com.example.rehabili_sample1.ui.dashboard.DashboardFragment;
-import com.example.rehabili_sample1.ui.first_loading.LoadingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.ListFragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -32,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     boolean sign = true;
     String shared = "file";
-    DashboardFragment dashboardFragment;
     NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_user, R.id.navigation_history)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -70,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.option_user_info:
-                navController.navigate(R.id.navigation_dashboard);
+                navController.navigate(R.id.navigation_user);
                 return true;
             case R.id.option_main_page:
                 navController.navigate(R.id.navigation_home);
                 return true;
             case R.id.option_history:
-                navController.navigate(R.id.navigation_notifications);
+                navController.navigate(R.id.navigation_history);
                 return true;
             case R.id.option_app_info:
                 Intent intent = new Intent(MainActivity.this, Appinfo.class);
