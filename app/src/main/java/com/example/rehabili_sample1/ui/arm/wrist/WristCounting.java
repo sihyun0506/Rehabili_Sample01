@@ -278,7 +278,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
 
         String dateTime = genDateTime();
         mDbOpenHelper.open();
-        type = "손목 돌리기        ";
+        type = "손목 돌리기         ";
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;
