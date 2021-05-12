@@ -29,6 +29,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     SensorManager mSensorMgr = null;
     //진동
     Vibrator mVib;
+
     int count = 0;
     private double Gx, Gy, Gz;
 
@@ -45,8 +46,22 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     // Set에서 받아올 값 3.
     public String type;
 
-    private double maxArk = 90;
-    private double minArk = 00;
+    private double maxArk = -45;
+    private double minArk = -45;
+
+    //--------------- 자이로 변수-------------------
+    private double pitch = 0;
+    private double roll = 0;
+    private double yaw = 0;
+    private double rollDegree;
+
+    //timestamp and dt
+    private double timestamp;
+    private double dt;
+
+    private static final float NS2S = 1.0f / 1000000000.0f;
+    //---------------------------------------------
+
     boolean isThread = false;
     Thread thread;
 
@@ -91,53 +106,33 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         thread = new Thread() {
             public void run() {
                 try {
-                    boolean minmaxflag = false;
-                    boolean firstCheck = true;
+                    boolean check = true;
+                    count = 0;
                     sleep(100); // 센서가 최초에 0부터 시작하므로 처음부터 Gx<min 에서 카운트 되는 걸 막기 위해 0.1초의 딜레이를 줌
                     handler.sendEmptyMessage(0);
-                    while (firstCheck) {
-                        sleep(100);
-                        warningVibrate();
-                        if (Gx < minArk && Gy < 15 && Gy > -15) {
-                            count = 1;
-//                                    showCount(count);   //count 출력
-                            mVib.vibrate(300); // 진동
-                            handler.sendEmptyMessage(0);
-                            minmaxflag = true;      // 다음에 체크할 숫자 확인
-                            firstCheck = false;
-                        } else if (Gx > maxArk && Gy < 15 && Gy > -15) {
-                            count = 1;
-//                                    showCount(count);   //count 출력
-                            mVib.vibrate(300); // 진동
-                            handler.sendEmptyMessage(0);
-                            minmaxflag = false;     // 다음에 체크할 숫자 확인
-                            firstCheck = false;     // 첫
-                        }
-                    }
                     while (count < 2 * goal) {
-                        int countCheck = count + 1;
-                        if (minmaxflag == true) {
-                            while (count < countCheck) {
-                                sleep(100);
-                                warningVibrate();
-                                if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >= 0) {
-                                    mVib.vibrate(300); // 진동
-                                    count++;
-                                }
+                        check = true;
+                        while (check) {
+                            sleep(100);
+                            warningVibrate();
+                            if (Gz < 10 && Gz > -10 && Gx > 30 && Gx < 60) {
+                                roll = yaw = pitch = 0;
+                                count++;
+                                mVib.vibrate(300); // 진동
+                                handler.sendEmptyMessage(0); // 카운트 출력
+                                check = false;
                             }
-                            handler.sendEmptyMessage(0);
-                            minmaxflag = false;
-                        } else {
-                            while (count < countCheck) {
-                                sleep(100);
-                                warningVibrate();
-                                if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >= 0) {
-                                    mVib.vibrate(300); // 진동
-                                    count++;
-                                }
+                        }
+                        check = true;
+                        while (check) {
+                            sleep(100);
+                            warningVibrate();
+                            if (rollDegree < minArk && Gx > 30 && Gx < 60) {
+                                count++;
+                                mVib.vibrate(300); // 진동
+                                handler.sendEmptyMessage(0); // 카운트 출력
+                                check = false;
                             }
-                            handler.sendEmptyMessage(0);
-                            minmaxflag = true;
                         }
                     }
 
@@ -192,9 +187,21 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
 
             //자이로 센서 이벤트 일 때
             case Sensor.TYPE_GYROSCOPE:
-//                double roll = roll + v[0];
-//                double pitch = pitch + v[1];
-//                double yaw = yaw + v[2];
+                // 각속도를 적분하여 회전각을 추출하기 위해 적분 간격(dt)를 구함
+                // dt : 센서가 현재 상태를 감지하는 시간간격
+                // NS2S : nano sec를 sec로
+                dt = (event.timestamp - timestamp) * NS2S;
+                timestamp = event.timestamp;
+
+                // 센서를 활성화 하였을 때 처음 timestamp가 0일 때에는 dt값이 올바르지 않으므로 넘어감.
+                if (dt - timestamp * NS2S != 0) {
+
+                    roll = roll + v[0] * dt;
+                    pitch = pitch + v[1] * dt;
+                    yaw = yaw + v[2] * dt;
+
+                    rollDegree = Math.toDegrees(roll);
+                }
                 break;
         }
     }
@@ -229,35 +236,35 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     public void setArk(String level) {
         switch (level) {
             case "Lv 1":
-                maxArk = 60;
-                minArk = 40;
+                maxArk = 40;
+                minArk = -40;
                 break;
             case "Lv 2":
-                maxArk = 70;
-                minArk = 30;
+                maxArk = 50;
+                minArk = -50;
                 break;
             case "Lv 3":
-                maxArk = 80;
-                minArk = 20;
+                maxArk = 60;
+                minArk = -60;
                 break;
             case "Lv 4":
-                maxArk = 80;
-                minArk = 10;
+                maxArk = 70;
+                minArk = -70;
                 break;
             case "Lv 5":
-                maxArk = 85;
-                minArk = 00;
+                maxArk = 80;
+                minArk = -80;
                 break;
             default:
-                maxArk = 80;
-                minArk = 20;
+                maxArk = 45;
+                minArk = -45;
         }
     }
 
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gy < -15 || Gy > 15)
+        if (Gx < 30 || Gx > 60)
             mVib.vibrate(1);
     }
 
