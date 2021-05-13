@@ -113,7 +113,7 @@ public class GripCounting extends AppCompatActivity {
         String dateTime = genDateTime();
         mDbOpenHelper.open();
         // DB정렬을 위해 문자열 변환 후 저장
-        type = "주먹 쥐기             ";
+        type = getString(R.string.grip)+"              ";
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;
