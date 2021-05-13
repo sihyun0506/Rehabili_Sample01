@@ -41,7 +41,7 @@ public class UserEditActivity extends AppCompatActivity {
                     Toast.makeText(UserEditActivity.this, "ID와 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     // ---------- 키보드 내리기 ----------
                     InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    manager.hideSoftInputFromWindow(editId.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     return;
                 }
                 Intent intent = new Intent();
