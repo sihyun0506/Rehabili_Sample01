@@ -23,7 +23,7 @@ public class Finish extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elbow_finish);
+        setContentView(R.layout.activity_finish);
 
         exerciseType = findViewById(R.id.exerciseType);
         goalNumber1 = findViewById(R.id.goalNumber1);

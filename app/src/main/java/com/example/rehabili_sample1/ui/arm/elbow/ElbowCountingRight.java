@@ -53,7 +53,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elbow_counting);
+        setContentView(R.layout.activity_elbow_counting_right);
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);

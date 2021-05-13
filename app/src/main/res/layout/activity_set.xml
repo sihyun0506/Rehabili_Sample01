@@ -45,6 +45,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
+        android:id="@+id/hoei"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" 회"
@@ -60,14 +61,24 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="추천 20"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.539" />
+        app:layout_constraintVertical_bias="0.4" />
+
+    <TextView
+        android:id="@+id/toUser"
+        android:text="※ 추천 횟수는 20회 입니다."
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/textGoal"
+        app:layout_constraintEnd_toEndOf="@+id/hoei"
+        app:layout_constraintTop_toBottomOf="@+id/goalNumber"/>
+
 
     <Spinner
         android:id="@+id/level"
@@ -90,9 +101,32 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
+        app:layout_constraintTop_toBottomOf="@id/radioGroup"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/toUser"
+        app:layout_constraintStart_toStartOf="@id/textGoal"
+        app:layout_constraintEnd_toEndOf="@id/hoei">
+
+        <RadioButton
+            android:id="@+id/radioLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="왼손" />
+
+        <RadioButton
+            android:id="@+id/radioRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오른손"
+            android:layout_marginLeft="50dp"/>
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
