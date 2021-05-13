@@ -21,7 +21,7 @@ public class GripActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
-    private String url = "https://www.youtube.com/embed/DrKY37Tz41M";
+    private String url = "https://www.youtube.com/embed/6nLLIVUFchA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

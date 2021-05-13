@@ -19,7 +19,7 @@ public class ElbowActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
-    private String url = "https://www.youtube.com/embed/DrKY37Tz41M";
+    private String url = "https://www.youtube.com/embed/iA5K3X29lrA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
