@@ -38,7 +38,7 @@ public class UserEditActivity extends AppCompatActivity {
                 weight = editWeight.getText().toString();
                 height = editHeight.getText().toString();
                 if(id.equals("")||name.equals("")){
-                    Toast.makeText(UserEditActivity.this, "ID와 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserEditActivity.this, getString(R.string.putIdName), Toast.LENGTH_SHORT).show();
                     // ---------- 키보드 내리기 ----------
                     InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     manager.hideSoftInputFromWindow(editId.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);

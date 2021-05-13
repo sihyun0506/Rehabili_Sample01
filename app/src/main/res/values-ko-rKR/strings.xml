@@ -1,9 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Rehabili</string>
-    <string name="title_home" translatable="false">Menu</string>
-    <string name="title_dashboard" translatable="false">User</string>
-    <string name="title_notifications" translatable="false">History</string>
-    <string name="fixText" translatable="false">Guest01</string>
     <string name="armdown">팔을 내려주세요</string>
     <string name="armup">팔을 올려주세요</string>
     <string name="wristdown">손목을 틀어주세요</string>
@@ -11,8 +7,8 @@
     <string name="griphard">힘주어 꽉 쥐세요</string>
     <string name="gripsoft">힘을 풀어 주세요</string>
     <string name="elbow">팔 구부렸다 펴기</string>
-    <string name="elbow_text">&#160;[ 굴곡 신전 운동 ]           &#160;휴대폰을 영상과 같이 잡고 가능한 수평을 유지한 채로 팔을 움직여 주세요.          &#160;손목의 각도는 팔과 일직선을 유지하는 것이 좋습니다.           &#160;바르지 않은 각도로 운동 시 약한 진동이 발생되며, 이때의 동작은 카운트 되지 않습니다.          &#160;카운트 시 진동이 발생되며, 왕복 1회에 1씩 카운트 됩니다.          &#160;단계가 높아질수록 카운트에 필요한 팔의 가동 각도가 더 커집니다.           &#160;목표달성 시 운동기록이 어플리케이션에 기록됩니다.</string>
     <string name="wrist">손목 돌리기</string>
+    <string name="elbow_text">&#160;[ 굴곡 신전 운동 ]           &#160;휴대폰을 영상과 같이 잡고 가능한 수평을 유지한 채로 팔을 움직여 주세요.          &#160;손목의 각도는 팔과 일직선을 유지하는 것이 좋습니다.           &#160;바르지 않은 각도로 운동 시 약한 진동이 발생되며, 이때의 동작은 카운트 되지 않습니다.          &#160;카운트 시 진동이 발생되며, 왕복 1회에 1씩 카운트 됩니다.          &#160;단계가 높아질수록 카운트에 필요한 팔의 가동 각도가 더 커집니다.           &#160;목표달성 시 운동기록이 어플리케이션에 기록됩니다.</string>
     <string name="wrist_text">&#160;[ 회외 운동 ]           &#160;휴대폰을 영상과 같이 잡고 가능한 수평을 유지한 채로 팔을 움직여 주세요.          &#160;팔과 몸은 적당한 거리를 유지해 주세요.           &#160;손목이 몸과 너무 가까워지거나 멀어지면 운동 시 약한 진동이 발생되며, 이때의 동작은 카운트 되지 않습니다.          &#160;카운트 시 진동이 발생되며, 왕복 1회에 1씩 카운트 됩니다.          &#160;단계가 높아질수록 카운트에 필요한 손목의 가동 각도가 더 커집니다.           &#160;목표달성 시 운동기록이 어플리케이션에 기록됩니다.</string>
     <string name="grip">주먹 쥐기</string>
     <string name="grip_text">"&#160;[ 힘주어 쥐기 운동 ]           &#160;휴대폰의 카운트에 맞추어 팔에 힘을 주어 주먹을 꽉 쥐세요.          &#160;휴대폰의 카운트는 약 5초 정도의 주기를 지닙니다.          &#160;20 회 반복시 종료되며 운동이 기록됩니다. "</string>
@@ -25,12 +21,12 @@
     <string name="welcome">&#160;님, 힘내세요!</string>
     <string name="yourHistory">&#160;님의 재활 기록입니다.</string>
     <string name="musthave">* 는 필수 입력 요소입니다.</string>
-    <string name="goodjob">수고하셨습니다!</string>
-    <string name="restart">재시작</string>
+    <string name="goodjob">수고하셨습니다</string>
     <string name="to_home">홈으로</string>
+    <string name="restart">재시작</string>
     <string name="exercise_type">종목 이름</string>
     <string name="time">회</string>
-    <string name="finished">완료하였습니다!</string>
+    <string name="finished">완료하였습니다</string>
     <string name="rehabi">재활이</string>
     <string name="user_info_edit">사용자 정보 수정</string>
     <string name="application_info">애플리케이션 정보</string>
@@ -38,14 +34,14 @@
     <string name="start">시작</string>
     <string name="left">왼손</string>
     <string name="right">오른손</string>
-    <string name="goal">목표:</string>
+    <string name="goal">목표</string>
     <string name="level">단계:</string>
     <string name="man">만</string>
     <string name="se">세</string>
-    <string name="username">이름</string>
-    <string name="age">나이</string>
-    <string name="weight">몸무게</string>
-    <string name="height">신장</string>
+    <string name="username">이름:</string>
+    <string name="age">나이:</string>
+    <string name="weight">몸무게:</string>
+    <string name="height">신장:</string>
     <string name="userinfoedit">수정하기</string>
     <string name="checkHand">사용할 손을 체크해주세요</string>
     <string name="set_goal_num">목표 횟수를 입력하세요</string>

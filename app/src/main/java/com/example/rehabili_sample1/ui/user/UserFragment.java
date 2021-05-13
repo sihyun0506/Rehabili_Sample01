@@ -69,7 +69,7 @@ public class UserFragment extends Fragment {
         if (name != "")
             textView2.setText(name);
         if (age != "")
-            textView3.setText("만 " + age + "세");
+            textView3.setText(getString(R.string.man) + age + getString(R.string.se));
         else
             textView3.setText("");
         if (weight != "")
@@ -142,7 +142,7 @@ public class UserFragment extends Fragment {
             if (name != "")
                 textView2.setText(name);
             if (age != "")
-                textView3.setText("만 " + age + "세");
+                textView3.setText(getString(R.string.man) + age + getString(R.string.se));
             else
                 textView3.setText("");
             if (weight != "")

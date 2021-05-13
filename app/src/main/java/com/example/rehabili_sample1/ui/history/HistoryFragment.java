@@ -218,13 +218,13 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
     private void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogStyle);
-        builder.setTitle("재활기록 삭제");
-        builder.setMessage("재활기록을 삭제하시겠습니까? \n모든 기록이 삭제됩니다.");
-        builder.setPositiveButton("예",
+        builder.setTitle(getString(R.string.remove_history));
+        builder.setMessage(getString(R.string.remove_really));
+        builder.setPositiveButton(getString(R.string.yes),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         mDbOpenHelper.deleteAllColumns();
-                        Toast.makeText(getActivity(), "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.removed), Toast.LENGTH_SHORT).show();
                         navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                         navController.navigate(R.id.navigation_history);
                     }
