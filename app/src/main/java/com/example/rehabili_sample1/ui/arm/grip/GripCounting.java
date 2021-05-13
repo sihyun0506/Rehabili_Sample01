@@ -57,10 +57,10 @@ public class GripCounting extends AppCompatActivity {
                     for (count = 0; count < 20; count++) {
                         handler.sendEmptyMessage(0);
                         mVib.vibrate(300); // 진동
-                        sleep(500);
+                        sleep(5000);
                         handler.sendEmptyMessage(1);
                         mVib.vibrate(300); // 진동
-                        sleep(500);
+                        sleep(5000);
                     }
 
                 } catch (InterruptedException e) {
