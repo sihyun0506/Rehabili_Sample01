@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_rehabili_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
-        <activity android:name=".Appinfo"></activity>
+        <activity android:name=".ui.arm.wrist.WristCountingRight"></activity>
+        <activity android:name=".ui.arm.elbow.ElbowCountingRight" />
+        <activity android:name=".ui.arm.grip.GripCounting" />
+        <activity android:name=".ui.arm.grip.GripActivity" />
+        <activity android:name=".Appinfo" />
         <activity android:name=".ui.user.UserEditActivity" />
         <activity android:name=".ui.Set" />
         <activity android:name=".ui.Finish" />
@@ -20,8 +24,7 @@
         <activity android:name=".ui.arm.elbow.ElbowActivity" />
         <activity android:name=".ui.arm.wrist.WristCounting" />
         <activity android:name=".ui.arm.wrist.WristActivity" />
-        <activity android:name=".ui.arm.ArmActivity" />
-        <!-- loading screen -->
+        <activity android:name=".ui.arm.ArmActivity" /> <!-- loading screen -->
         <activity
             android:name=".ui.first_loading.LoadingActivity"
             android:screenOrientation="portrait"
@@ -31,8 +34,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- main -->
+        </activity> <!-- main -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
