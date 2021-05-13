@@ -1,6 +1,7 @@
 package com.example.rehabili_sample1.ui.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,50 +19,54 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.ArmActivity;
+import com.example.rehabili_sample1.ui.arm.elbow.ElbowActivity;
+import com.example.rehabili_sample1.ui.arm.grip.GripActivity;
+import com.example.rehabili_sample1.ui.arm.wrist.WristActivity;
 
 public class HomeFragment extends Fragment {
+
+    String name;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        Button btn1 = (Button) root.findViewById(R.id.btn_1);
-        Button btn2 = (Button) root.findViewById(R.id.btn_2);
-        Button btn3 = (Button) root.findViewById(R.id.btn_3);
-        Button btn4 = (Button) root.findViewById(R.id.btn_4);
-        Button btn5 = (Button) root.findViewById(R.id.btn_5);
-        String non = "미구현 항목입니다.";
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("file", 0);
+        name = sharedPreferences.getString("name", "");
+        if (name.equals("")) {
+            name = "재활이";
+        }
+
+        TextView userName = (TextView) root.findViewById(R.id.userNameHome);
+        String welcome = getString(R.string.welcome);
+        userName.setText(name + welcome);
+
+        Button wristButton = (Button) root.findViewById(R.id.wrist);
+        Button gripButton = (Button) root.findViewById(R.id.grip);
+        Button elbowButton = (Button) root.findViewById(R.id.elbow);
+        wristButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ArmActivity.class);
+                Intent intent = new Intent(getActivity(), WristActivity.class);
                 startActivity(intent);
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        gripButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),non,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), GripActivity.class);
+                startActivity(intent);
             }
         });
-        btn3.setOnClickListener(new View.OnClickListener() {
+        elbowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),non,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ElbowActivity.class);
+                startActivity(intent);
             }
         });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),non,Toast.LENGTH_SHORT).show();
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),non,Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return root;
     }
 }

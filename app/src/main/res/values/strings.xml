@@ -25,5 +25,5 @@
     <string name="must">필수</string>
     <string name="app_info_content">&#160;재활 도우미 어플리케이션입니다.\n
         &#160;사용해주셔서 감사합니다.</string>
-
+    <string name="welcome">&#160;님, 환영합니다.</string>
 </resources>
