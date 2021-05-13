@@ -54,26 +54,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id){
-            case R.id.option_user_info:
-                navController.navigate(R.id.navigation_user);
-                return true;
-            case R.id.option_main_page:
-                navController.navigate(R.id.navigation_home);
-                return true;
-            case R.id.option_history:
-                navController.navigate(R.id.navigation_history);
-                return true;
-            case R.id.option_app_info:
-                Intent intent = new Intent(MainActivity.this, Appinfo.class);
-                startActivity(intent);
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onDestroy() {
