@@ -52,4 +52,5 @@
     <string name="under50">50回以下の数字を入力してください</string>
     <string name="set_goal_num">目標回数を入力してください</string>
     <string name="checkHand">手をチェックしてください</string>
+    <string name="next">スタート</string>
 </resources>

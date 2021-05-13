@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.R;
@@ -35,7 +36,7 @@ public class GripActivity extends AppCompatActivity {
         webView.loadUrl(url);
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new GripActivity.WebViewClientClass());
-        FloatingActionButton gripNext = (FloatingActionButton) findViewById(R.id.nextGrip);
+        Button gripNext = (Button) findViewById(R.id.nextGrip);
         gripNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
