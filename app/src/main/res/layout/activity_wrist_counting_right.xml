@@ -14,13 +14,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gripsmallright" />
+        app:srcCompat="@drawable/gripsmallright2" />
 
     <TextView
         android:id="@+id/showCountNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotation="90"
+        android:rotation="-90"
         android:textSize="100dp"
         android:text="Count"
         android:textColor="@color/black"
@@ -29,12 +29,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.65" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotation="90"
+        android:rotation="-90"
         android:textSize="100dp"
         android:text="/"
         android:textColor="@color/black"
@@ -47,7 +47,7 @@
         android:id="@+id/showGoalNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotation="90"
+        android:rotation="-90"
         android:textSize="100dp"
         android:text="Goal"
         android:textColor="@color/black"
@@ -56,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.35" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
