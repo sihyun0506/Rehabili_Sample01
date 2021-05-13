@@ -38,6 +38,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
     private int goal;
     private TextView showGoalNumber;
     private TextView showCountNumber;
+    private TextView showMessages;
 
     // Set에서 받아올 값 2.
     public String level;
@@ -57,6 +58,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
+        showMessages = findViewById(R.id.textOut);
 
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
@@ -100,7 +102,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                             count = 1;
 //                                    showCount(count);   //count 출력
                             mVib.vibrate(300); // 진동
-                            handler.sendEmptyMessage(0);
+                            handler.sendEmptyMessage(1);
                             minmaxflag = true;      // 다음에 체크할 숫자 확인
                             firstCheck = false;
                         } else if (Gx > maxArk && Gy < 15 && Gy > -15) {
@@ -134,7 +136,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                                     count++;
                                 }
                             }
-                            handler.sendEmptyMessage(0);
+                            handler.sendEmptyMessage(1);
                             minmaxflag = true;
                         }
                     }
@@ -169,7 +171,11 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-                showCountNumber.setText(String.valueOf(count / 2));
+                showMessages.setText(R.string.armdown);
+                showCountNumber.setText(String.valueOf(count/2));
+            } else if (msg.what == 1) {
+                showMessages.setText(R.string.armup);
+                showCountNumber.setText(String.valueOf(count/2));
             }
         }
     };
@@ -273,7 +279,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
 
         String dateTime = genDateTime();
         mDbOpenHelper.open();
-        type = "팔 구부렸다 펴기";
+        type = getString(R.string.elbow);
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;

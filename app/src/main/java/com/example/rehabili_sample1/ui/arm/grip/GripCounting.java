@@ -55,10 +55,10 @@ public class GripCounting extends AppCompatActivity {
             public void run() {
                 try {
                     for (count = 0; count < 20; count++) {
-                        handler.sendEmptyMessage(0);
+                        handler.sendEmptyMessage(1);
                         mVib.vibrate(300); // 진동
                         sleep(5000);
-                        handler.sendEmptyMessage(1);
+                        handler.sendEmptyMessage(0);
                         mVib.vibrate(300); // 진동
                         sleep(5000);
                     }
@@ -94,6 +94,12 @@ public class GripCounting extends AppCompatActivity {
             }
         }
     };
+
+    // 뒤로가기 방지
+    @Override
+    public void onBackPressed() {
+
+    }
 
     // 현재 시간 생성
     public String genDateTime() {

@@ -39,6 +39,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     private int goal;
     private TextView showGoalNumber;
     private TextView showCountNumber;
+    private TextView showMessages;
 
     // Set에서 받아올 값 2.
     public String level;
@@ -72,6 +73,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
+        showMessages = findViewById(R.id.textOut);
 
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
@@ -109,7 +111,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                     boolean check = true;
                     count = 0;
                     sleep(100); // 센서가 최초에 0부터 시작하므로 처음부터 Gx<min 에서 카운트 되는 걸 막기 위해 0.1초의 딜레이를 줌
-                    handler.sendEmptyMessage(0);
+                    handler.sendEmptyMessage(1);
                     while (count < 2 * goal) {
                         check = true;
                         while (check) {
@@ -130,7 +132,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                             if (rollDegree < minArk && Gx > 30 && Gx < 60) {
                                 count++;
                                 mVib.vibrate(300); // 진동
-                                handler.sendEmptyMessage(0); // 카운트 출력
+                                handler.sendEmptyMessage(1); // 카운트 출력
                                 check = false;
                             }
                         }
@@ -166,7 +168,11 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-                showCountNumber.setText(String.valueOf(count / 2));
+                showMessages.setText(R.string.wristdown);
+                showCountNumber.setText(String.valueOf(count/2));
+            } else if (msg.what == 1) {
+                showMessages.setText(R.string.wristup);
+                showCountNumber.setText(String.valueOf(count/2));
             }
         }
     };
