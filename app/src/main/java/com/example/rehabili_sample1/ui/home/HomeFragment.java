@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("file", 0);
         name = sharedPreferences.getString("name", "");
         if (name.equals("")) {
-            name = "재활이";
+            name = getString(R.string.rehabi);
         }
 
         TextView userName = (TextView) root.findViewById(R.id.userNameHome);

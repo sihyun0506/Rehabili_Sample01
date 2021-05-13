@@ -40,20 +40,4 @@
     <string name="right">오른손</string>
     <string name="goal">목표:</string>
     <string name="level">단계:</string>
-    <string name="man">만</string>
-    <string name="se">세</string>
-    <string name="username">이름</string>
-    <string name="age">나이</string>
-    <string name="weight">몸무게</string>
-    <string name="height">신장</string>
-    <string name="userinfoedit">수정하기</string>
-    <string name="checkHand">사용할 손을 체크해주세요</string>
-    <string name="set_goal_num">목표 횟수를 입력하세요</string>
-    <string name="under50">50회 이하의 값을 입력하세요</string>
-    <string name="putIdName">ID와 이름을 입력하세요</string>
-    <string name="remove_history">재활 기록 삭제</string>
-    <string name="remove_really">재활기록을 삭제하시겠습니까? /n 모든 기록이 삭제됩니다.</string>
-    <string name="yes">예</string>
-    <string name="no">아니오</string>
-    <string name="removed">삭제되었습니다.</string>
 </resources>

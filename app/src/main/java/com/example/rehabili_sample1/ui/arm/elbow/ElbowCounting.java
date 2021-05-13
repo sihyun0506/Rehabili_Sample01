@@ -273,7 +273,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
 
         String dateTime = genDateTime();
         mDbOpenHelper.open();
-        type = "팔 구부렸다 펴기";
+        type = getString(R.string.elbow);
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;

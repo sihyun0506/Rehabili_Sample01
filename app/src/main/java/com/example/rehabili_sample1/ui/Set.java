@@ -64,23 +64,23 @@ public class Set extends AppCompatActivity {
                 RadioButton radio = (RadioButton) findViewById((rg.getCheckedRadioButtonId()));
                 radioValue = radio.getText().toString();
                 if (radioValue.equals("")){
-                    Toast.makeText(Set.this, "사용할 손을 체크해주세요", android.widget.Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Set.this, getString(R.string.checkHand), android.widget.Toast.LENGTH_SHORT).show();
                     return;
                 }
                 goalNumber = editText.getText().toString();
 
                 if (goalNumber.equals("") || Integer.parseInt(goalNumber) == 0) {
-                    Toast.makeText(Set.this, "목표 횟수를 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Set.this, getString(R.string.set_goal_num), android.widget.Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (Integer.parseInt(goalNumber) >= 50) {
-                    Toast.makeText(Set.this, "50회 이하의 값을 입력하세요", android.widget.Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Set.this, getString(R.string.under50), android.widget.Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     // type과 좌 우에 따라 Counting으로 값을 넘겨줌
-                    if (type.equals("팔 구부렸다 펴기")) {
+                    if (type.equals(getString(R.string.elbow))) {
                         Intent intent;
-                        if (radioValue.equals("왼손")) {
+                        if (radioValue.equals(getString(R.string.left))) {
                             intent = new Intent(Set.this, ElbowCounting.class);
                         } else {
                             intent = new Intent(Set.this, ElbowCountingRight.class);
@@ -89,9 +89,9 @@ public class Set extends AppCompatActivity {
                         intent.putExtra("goalNumber", goalNumber);
                         intent.putExtra("level", level);
                         startActivity(intent);
-                    } else if (type.equals("손목 돌리기")) {
+                    } else if (type.equals(getString(R.string.wrist))) {
                         Intent intent;
-                        if (radioValue.equals("왼손")) {
+                        if (radioValue.equals(getString(R.string.left))) {
                             intent = new Intent(Set.this, WristCounting.class);
                         } else {
                             intent = new Intent(Set.this, WristCountingRight.class);

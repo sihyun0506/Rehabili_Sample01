@@ -23,32 +23,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="단계: "
+        android:layout_marginBottom="72dp"
+        android:text="@string/level"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@id/textGoal"
-        app:layout_constraintEnd_toStartOf="@id/level"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/textGoal" />
+        app:layout_constraintEnd_toEndOf="@+id/textGoal" />
 
     <TextView
         android:id="@+id/textGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="목표: "
+        android:layout_marginBottom="4dp"
+        android:text="@string/goal"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@id/goalNumber"
-        app:layout_constraintEnd_toStartOf="@id/goalNumber"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@id/goalNumber" />
 
     <TextView
         android:id="@+id/hoei"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 회"
+        android:text="@string/time"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@id/goalNumber"
@@ -71,7 +68,7 @@
 
     <TextView
         android:id="@+id/toUser"
-        android:text="※ 추천 횟수는 20회 입니다."
+        android:text="@string/recommand"
         android:textSize="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/arm_button"
-        android:text="시작"
+        android:text="@string/start"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,13 +117,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="왼손" />
+            android:text="@string/left" />
 
         <RadioButton
             android:id="@+id/radioRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오른손"
+            android:text="@string/right"
             android:layout_marginLeft="50dp"/>
     </RadioGroup>
 
