@@ -63,6 +63,10 @@ public class Set extends AppCompatActivity {
             public void onClick(View v) {
                 RadioButton radio = (RadioButton) findViewById((rg.getCheckedRadioButtonId()));
                 radioValue = radio.getText().toString();
+                if (radioValue.equals("")){
+                    Toast.makeText(Set.this, "사용할 손을 체크해주세요", android.widget.Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 goalNumber = editText.getText().toString();
 
                 if (goalNumber.equals("") || Integer.parseInt(goalNumber) == 0) {
