@@ -8,17 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
-import com.example.rehabili_sample1.ui.arm.ArmActivity;
 import com.example.rehabili_sample1.ui.arm.elbow.ElbowActivity;
 import com.example.rehabili_sample1.ui.arm.grip.GripActivity;
 import com.example.rehabili_sample1.ui.arm.wrist.WristActivity;

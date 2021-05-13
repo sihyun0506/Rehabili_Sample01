@@ -24,7 +24,7 @@
         <activity android:name=".ui.arm.elbow.ElbowActivity" />
         <activity android:name=".ui.arm.wrist.WristCounting" />
         <activity android:name=".ui.arm.wrist.WristActivity" />
-        <activity android:name=".ui.arm.ArmActivity" /> <!-- loading screen -->
+        <!-- loading screen -->
         <activity
             android:name=".ui.first_loading.LoadingActivity"
             android:screenOrientation="portrait"
