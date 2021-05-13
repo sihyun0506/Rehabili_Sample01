@@ -46,6 +46,7 @@ public class Finish extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Finish.this, Set.class);
+                intent.putExtra("type",type);
                 startActivity(intent);
             }
         });
