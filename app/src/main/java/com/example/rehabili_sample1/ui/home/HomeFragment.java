@@ -45,6 +45,11 @@ public class HomeFragment extends Fragment {
         Button wristButton = (Button) root.findViewById(R.id.wrist);
         Button gripButton = (Button) root.findViewById(R.id.grip);
         Button elbowButton = (Button) root.findViewById(R.id.elbow);
+        Button wristButton2 = (Button) root.findViewById(R.id.wrist2);
+        Button gripButton2 = (Button) root.findViewById(R.id.grip2);
+        Button elbowButton2 = (Button) root.findViewById(R.id.elbow2);
+
+
         wristButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +71,27 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        wristButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WristActivity.class);
+                startActivity(intent);
+            }
+        });
+        gripButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GripActivity.class);
+                startActivity(intent);
+            }
+        });
+        elbowButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ElbowActivity.class);
+                startActivity(intent);
+            }
+        });
         return root;
     }
 }

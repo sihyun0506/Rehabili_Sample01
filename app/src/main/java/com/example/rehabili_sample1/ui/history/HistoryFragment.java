@@ -82,9 +82,11 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         if (name.equals("")) {
             name = "재활이";
         }
+        String yourHistory = getString(R.string.yourHistory);
 
         TextView userName = (TextView) root.findViewById(R.id.userName);
-        userName.setText(name + "님의 재활 기록입니다.");
+        userName.setText(name + yourHistory);
+
         Button removeButton = (Button) root.findViewById(R.id.remove);
         removeButton.setOnClickListener(this);
 
