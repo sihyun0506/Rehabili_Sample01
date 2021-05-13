@@ -22,24 +22,24 @@
         android:text="Rehabili"
         android:layout_marginTop="150dp"/>
     <TextView
-        android:textSize="20dp"
+        android:textSize="14dp"
         android:fontStyle="normal"
         android:font="@font/nanum_barun_gothic"
         android:textColor="@color/gray"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Rehabili"
+        android:text="Welcome to Arm Rehabilitation Helper !"
         android:layout_marginTop="100dp"/>
     <TextView
-        android:textSize="15dp"
+        android:textSize="16dp"
         android:fontStyle="normal"
         android:font="@font/nanum_myeongjo"
         android:textColor="@color/gray"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="재활 운동 어플리케이션 Rehabili 에 어서오세요." />
+        android:text=" 팔 재활 도우미 Rehabili 에 어서오세요." />
 
 
 </LinearLayout>
