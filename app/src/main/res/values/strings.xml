@@ -40,4 +40,5 @@
         &#160;이용해주셔서 감사합니다.</string>
     <string name="welcome">&#160;님, 환영합니다.</string>
     <string name="yourHistory">&#160;님의 재활 기록입니다.</string>
+    <string name="musthave">* 는 필수 요소입니다.</string>
 </resources>
