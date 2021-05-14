@@ -138,8 +138,6 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                     count = 0;
                     sleep(100); // 센서가 최초에 0부터 시작하므로 처음부터 Gx<min 에서 카운트 되는 걸 막기 위해 0.1초의 딜레이를 줌
                     handler.sendEmptyMessage(1);
-
-
                     while (count < 2 * goal) {
                         check = true;
                         while (check) {
@@ -224,9 +222,11 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
             if (msg.what == 0) {
                 showMessages.setText(R.string.wristdown);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts.speak(getString(R.string.wristdown), TextToSpeech.QUEUE_FLUSH, null);
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.wristup);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts.speak(getString(R.string.wristup), TextToSpeech.QUEUE_FLUSH, null);
             }
         }
     };
@@ -351,5 +351,15 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+            tts = null;
+        }
     }
 }

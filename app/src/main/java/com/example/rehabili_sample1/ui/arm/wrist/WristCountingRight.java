@@ -219,9 +219,11 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
             if (msg.what == 0) {
                 showMessages.setText(R.string.wristdown);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts.speak(getString(R.string.wristdown), TextToSpeech.QUEUE_FLUSH, null);
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.wristup);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts.speak(getString(R.string.wristup), TextToSpeech.QUEUE_FLUSH, null);
             }
         }
     };
@@ -319,8 +321,10 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gx < -70 || Gx > -20 || Gy < 0)
+        if (Gx < -70 || Gx > -20 || Gy < 0) {
+            wrongAngleCount++;
             mVib.vibrate(1);
+        }
     }
 
     // 현재 시간 생성
@@ -345,5 +349,15 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+            tts = null;
+        }
     }
 }
