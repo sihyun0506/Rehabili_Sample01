@@ -9,10 +9,19 @@
     <string name="wrist">回外運動</string>
     <string name="wrist_text">回外運動</string>
     <string name="elbow">屈曲伸展運動</string>
-    <string name="elbow_text">屈曲/伸展</string>
+    <string name="elbow_text">&#160;[ 屈曲伸展運動 ]
+        \nスマホを映像のようになるべく水平を維持したまま腕を動いて下さい
+        \n手首の角度は腕と一直線を維持してください。
+        \n正しくない角度で動くと軽い振動が発生し、その時の動作はカウントされません。
+        \nカウントが上がると振動が発生し、往復一回で１カウントします。
+        \nレベルが上がれば上がるほど、カウントに必要な腕の角度の要求値が上がります。
+        \n標達成時に記録がヒストリーに保存されます。
+    </string>
     <string name="grip">こぶし握り</string>
-    <string name="grip_text">こぶし握り</string>
-    <string name="user_info">ユーザー情報</string>
+    <string name="grip_text">"&#160;[ こぶし握り ]
+        \n スマホのカウントに合わせてこぶしを強く握ってください。
+        \n スマホのカウントは5秒を周期に
+        \n ２０回繰り返しで運動が終了し、記録がヒストリーに保存されます。</string>    <string name="user_info">ユーザー情報</string>
     <string name="history">ヒストリー</string>
     <string name="main_page">メイン</string>
     <string name="app_info">アプリ情報</string>
@@ -46,11 +55,16 @@
     <string name="removed">削除されました</string>
     <string name="no">いいえ</string>
     <string name="yes">はい</string>
-    <string name="remove_really">削除しますか？ /n修復されません。</string>
+    <string name="remove_really">削除しますか？ 修復されません。</string>
     <string name="remove_history">ヒストリー削除</string>
     <string name="putIdName">IDと名前を入力してください</string>
     <string name="under50">50回以下の数字を入力してください</string>
     <string name="set_goal_num">目標回数を入力してください</string>
     <string name="checkHand">手をチェックしてください</string>
     <string name="next">スタート</string>
+    <string name="lev">レベル</string>
+    <string name="tim">回数</string>
+    <string name="jong">タイプ</string>
+    <string name="day__time">&#160;&#160;&#160;&#160;&#160;&#160;日付&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;時刻&#160;&#160;&#160;&#160;&#160;&#160;</string>
+
 </resources>

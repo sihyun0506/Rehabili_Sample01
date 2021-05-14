@@ -53,4 +53,10 @@
     <string name="no">No</string>
     <string name="removed">Removed.</string>
     <string name="next">Start</string>
+    <string name="tim">Times</string>
+    <string name="lev">Level</string>
+    <string name="jong">Type</string>
+    <string name="day__time">&#160;&#160;&#160;&#160;&#160;Day&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Time&#160;&#160;&#160;&#160;&#160;&#160;</string>
+
+
 </resources>

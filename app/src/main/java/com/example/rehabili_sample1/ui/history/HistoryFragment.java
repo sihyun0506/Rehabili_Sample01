@@ -229,7 +229,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
                         navController.navigate(R.id.navigation_history);
                     }
                 });
-        builder.setNegativeButton("아니오",
+        builder.setNegativeButton(getString(R.string.no),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }

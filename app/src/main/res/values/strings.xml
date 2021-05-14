@@ -72,4 +72,8 @@
     <string name="no">아니오</string>
     <string name="removed">삭제되었습니다.</string>
     <string name="next">시작</string>
+    <string name="jong">종목</string>
+    <string name="lev">단계</string>
+    <string name="tim">횟수</string>
+    <string name="day__time">&#160;&#160;&#160;&#160;&#160;&#160;날짜&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;시간&#160;&#160;&#160;&#160;&#160;&#160;</string>
 </resources>
