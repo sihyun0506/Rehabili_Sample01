@@ -59,6 +59,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // 음성출력
     int wrongAngleCount = 0;
     private TextToSpeech tts;
+    private TextToSpeech tts2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +86,29 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
             }
         });
 
+        // tts2
+        tts2 = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
+
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
         showMessages = findViewById(R.id.textOut);
-
 
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
@@ -232,9 +252,11 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
             if (msg.what == 0) {
                 showMessages.setText(R.string.armdown);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts2.speak(getString(R.string.armdown),TextToSpeech.QUEUE_FLUSH,null);
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.armup);
                 showCountNumber.setText(String.valueOf(count / 2));
+                tts2.speak(getString(R.string.armup),TextToSpeech.QUEUE_FLUSH,null);
             }
         }
     };

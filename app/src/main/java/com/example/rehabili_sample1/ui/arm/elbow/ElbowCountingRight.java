@@ -57,6 +57,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
     // 음성출력
     int wrongAngleCount = 0;
     private TextToSpeech tts;
+    private TextToSpeech tts2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,26 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
 
         // tts
         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
+
+        // tts
+        tts2 = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS) {
@@ -235,10 +256,12 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 showMessages.setText(R.string.armdown);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
+                tts2.speak(getString(R.string.armdown),TextToSpeech.QUEUE_FLUSH,null);
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.armup);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
+                tts2.speak(getString(R.string.armup),TextToSpeech.QUEUE_FLUSH,null);
             }
         }
     };
