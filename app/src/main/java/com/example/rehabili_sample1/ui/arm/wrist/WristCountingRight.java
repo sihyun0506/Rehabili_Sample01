@@ -8,10 +8,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.DbOpenHelper;
@@ -20,6 +22,7 @@ import com.example.rehabili_sample1.ui.Finish;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static java.lang.Math.atan;
 
@@ -28,7 +31,6 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
     SensorManager mSensorMgr = null;
     //진동
     Vibrator mVib;
-
     int count = 0;
     private double Gx, Gy, Gz;
 
@@ -65,10 +67,34 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
     boolean isThread = false;
     Thread thread;
 
+    // 음성출력
+    int wrongAngleCount = 0;
+    private TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrist_counting_right);
+
+        // tts
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
@@ -116,7 +142,19 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
                         while (check) {
                             sleep(100);
                             warningVibrate();
-                            if (Gz < 10 && Gz > -10 && Gx > -60 && Gx < -30) {
+                            // 예외 각도가 8초 이상 지속되면 정정 음성 출력
+                            if (wrongAngleCount == 80) {
+                                wrongAngleCount = 0;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null, null);
+                                else
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
+                            }
+                            // 올바른 각도로 돌아올 시 음성 조기 종료
+                            if (Gx < -20 && Gx > -70 && Gy > 0) {
+                                tts.stop();
+                            }
+                            if (Gz < 10 && Gz > -10 && Gx > -70 && Gx < -20 && Gy > 0) {
                                 roll = yaw = pitch = 0;
                                 count++;
                                 mVib.vibrate(300); // 진동
@@ -128,7 +166,19 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
                         while (check) {
                             sleep(100);
                             warningVibrate();
-                            if (rollDegree < minArk && Gx > -60 && Gx < -30) {
+                            // 예외 각도가 8초 이상 지속되면 정정 음성 출력
+                            if (wrongAngleCount == 80) {
+                                wrongAngleCount = 0;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null, null);
+                                else
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
+                            }
+                            // 올바른 각도로 돌아올 시 음성 조기 종료
+                            if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                tts.stop();
+                            }
+                            if (rollDegree < minArk && Gx > -70 && Gx < -20 && Gy > 0) {
                                 count++;
                                 mVib.vibrate(300); // 진동
                                 handler.sendEmptyMessage(1); // 카운트 출력
@@ -168,10 +218,10 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 showMessages.setText(R.string.wristdown);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.wristup);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             }
         }
     };
@@ -269,7 +319,7 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gx < -60 || Gx > -30)
+        if (Gx < -70 || Gx > -20 || Gy < 0)
             mVib.vibrate(1);
     }
 
@@ -291,7 +341,7 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
         String dateTime = genDateTime();
         mDbOpenHelper.open();
         // DB정렬을 위해 문자열 변환 후 저장
-        type = getString(R.string.wrist)+"          ";
+        type = getString(R.string.wrist) + "          ";
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;

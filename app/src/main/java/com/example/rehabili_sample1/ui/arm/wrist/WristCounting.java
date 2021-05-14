@@ -8,10 +8,12 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.DbOpenHelper;
@@ -20,6 +22,7 @@ import com.example.rehabili_sample1.ui.Finish;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static java.lang.Math.atan;
 
@@ -29,7 +32,6 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     SensorManager mSensorMgr = null;
     //진동
     Vibrator mVib;
-
     int count = 0;
     private double Gx, Gy, Gz;
 
@@ -66,10 +68,34 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     boolean isThread = false;
     Thread thread;
 
+    // 음성출력
+    int wrongAngleCount = 0;
+    private TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrist_counting);
+
+        // tts
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
@@ -112,12 +138,27 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                     count = 0;
                     sleep(100); // 센서가 최초에 0부터 시작하므로 처음부터 Gx<min 에서 카운트 되는 걸 막기 위해 0.1초의 딜레이를 줌
                     handler.sendEmptyMessage(1);
+
+
                     while (count < 2 * goal) {
                         check = true;
                         while (check) {
                             sleep(100);
                             warningVibrate();
-                            if (Gz < 10 && Gz > -10 && Gx > 30 && Gx < 60) {
+                            // 예외 각도가 8초 이상 지속되면 정정 음성 출력
+                            if (wrongAngleCount == 80) {
+                                wrongAngleCount = 0;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null, null);
+                                else
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
+                            }
+                            // 올바른 각도로 돌아올 시 음성 조기 종료
+                            if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                tts.stop();
+                            }
+                            // 정상동작시 진동 출력 후 카운트
+                            if (Gz < 10 && Gz > -10 && Gx > 20 && Gx < 70 && Gy > 0) {
                                 roll = yaw = pitch = 0;
                                 count++;
                                 mVib.vibrate(300); // 진동
@@ -129,7 +170,20 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                         while (check) {
                             sleep(100);
                             warningVibrate();
-                            if (rollDegree < minArk && Gx > 30 && Gx < 60) {
+                            // 예외 각도가 8초 이상 지속되면 정정 음성 출력
+                            if (wrongAngleCount == 80) {
+                                wrongAngleCount = 0;
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null, null);
+                                else
+                                    tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
+                            }
+                            // 올바른 각도로 돌아올 시 음성 조기 종료
+                            if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                tts.stop();
+                            }
+                            // 정상동작시 진동 출력 후 카운트
+                            if (rollDegree < minArk && Gx > 20 && Gx < 70 && Gy > 0) {
                                 count++;
                                 mVib.vibrate(300); // 진동
                                 handler.sendEmptyMessage(1); // 카운트 출력
@@ -169,10 +223,10 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 showMessages.setText(R.string.wristdown);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.wristup);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             }
         }
     };
@@ -183,8 +237,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         float v[] = event.values;
 
         switch (event.sensor.getType()) {
-            //가속도 센서 이벤트 일 때 X,Y,Z축 가속도값과 X,Y축의 기울기를 화면에 표시.
-            //나중에 삭제
+            //가속도 센서 이벤트 일 때 X,Y,Z축 가속도값을 Gx, Gy, Gz 를 통해 받아옴
             case Sensor.TYPE_ACCELEROMETER:
                 Gx = Math.toDegrees(atan(v[0] / Math.sqrt(v[1] * v[1] + v[2] * v[2])));
                 Gy = Math.toDegrees(atan(v[1] / Math.sqrt(v[0] * v[0] + v[2] * v[2])));
@@ -270,8 +323,10 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gx < 30 || Gx > 60)
+        if (Gx < 20 || Gx > 70 || Gy < 0) {
+            wrongAngleCount++;
             mVib.vibrate(1);
+        }
     }
 
     // 현재 시간 생성
@@ -292,7 +347,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
         String dateTime = genDateTime();
         mDbOpenHelper.open();
         // DB정렬을 위해 문자열 변환 후 저장
-        type = getString(R.string.wrist)+"          ";
+        type = getString(R.string.wrist) + "          ";
         mDbOpenHelper.insertColumn(dateTime, type, level, goal);
 
         return flag;

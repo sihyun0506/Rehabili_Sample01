@@ -60,7 +60,6 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     int wrongAngleCount = 0;
     private TextToSpeech tts;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,6 +127,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                     while (firstCheck) {
                         sleep(100);
                         warningVibrate();
+                        // 예외 각도가 8초 이상 지속되면 정정 음성 출력
                         if (wrongAngleCount == 80) {
                             wrongAngleCount = 0;
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -135,16 +135,17 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             else
                                 tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
                         }
-                        if (Gy < 15 && Gy > -15) {
+                        // 올바른 각도로 돌아올 시 음성 조기 종료
+                        if (Gy < 15 && Gy > -15 && Gz >= 0) {
                             tts.stop();
                         }
-                        if (Gx < minArk && Gy < 15 && Gy > -15) {
+                        if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >= 0) {
                             count = 1;
                             mVib.vibrate(300); // 진동
                             handler.sendEmptyMessage(1);
                             minmaxflag = true;      // 다음에 체크할 숫자 확인
                             firstCheck = false;
-                        } else if (Gx > maxArk && Gy < 15 && Gy > -15) {
+                        } else if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >= 0) {
                             count = 1;
                             mVib.vibrate(300); // 진동
                             handler.sendEmptyMessage(0);
@@ -165,7 +166,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                                     else
                                         tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
                                 }
-                                if (Gy < 15 && Gy > -15) {
+                                if (Gy < 15 && Gy > -15 && Gz >= 0) {
                                     tts.stop();
                                 }
                                 if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >= 0) {
@@ -186,7 +187,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                                     else
                                         tts.speak(getString(R.string.wrongText), TextToSpeech.QUEUE_FLUSH, null);
                                 }
-                                if (Gy < 15 && Gy > -15) {
+                                if (Gy < 15 && Gy > -15 && Gz >= 0) {
                                     tts.stop();
                                 }
                                 if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >= 0) {
@@ -270,7 +271,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(tts != null){
+        if (tts != null) {
             tts.stop();
             tts.shutdown();
             tts = null;
@@ -324,7 +325,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gy < -15 || Gy > 15) {
+        if (Gy < -15 || Gy > 15 || Gz < 0) {
             wrongAngleCount++;
             mVib.vibrate(1);
         }
