@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.DbOpenHelper;
@@ -20,6 +21,7 @@ import com.example.rehabili_sample1.ui.Finish;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static java.lang.Math.atan;
 
@@ -66,10 +68,33 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
     boolean isThread = false;
     Thread thread;
 
+    // 음성출력
+    int wrongAngleCount = 0;
+    private TextToSpeech tts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrist_counting);
+
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
 
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
@@ -172,9 +197,13 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
             if (msg.what == 0) {
                 showMessages.setText(R.string.wristdown);
                 showCountNumber.setText(String.valueOf(count/2));
+                tts.speak(getString(R.string.wristdown), TextToSpeech.QUEUE_FLUSH, null);
+
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.wristup);
                 showCountNumber.setText(String.valueOf(count/2));
+                tts.speak(getString(R.string.wristup), TextToSpeech.QUEUE_FLUSH, null);
+
             }
         }
     };

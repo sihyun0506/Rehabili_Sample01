@@ -59,7 +59,13 @@ public class TTSReader extends AppCompatActivity{
         });
 
     }
-
+    public void ttsStop(){
+        try {
+            tts.stop();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+    }
     //액티비티가 사라지면 메소드를 불러와서 tts를 소멸
     public void ttsRemove(){
         if(tts != null){
