@@ -14,14 +14,19 @@ import android.widget.TextView;
 
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.Set;
+import com.example.rehabili_sample1.ui.TTSReader;
 import com.example.rehabili_sample1.ui.arm.wrist.WristActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Locale;
 
 public class GripActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
     private String url = "https://www.youtube.com/embed/6nLLIVUFchA";
+    String text;
+    TTSReader ttsReader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,20 @@ public class GripActivity extends AppCompatActivity {
             }
         });
 
-    }
+        TextView textView = (TextView)findViewById(R.id.grip_explain);
+        text = getString(R.string.grip_text);
+        ttsReader = new TTSReader();
+        Locale systemLocale = getResources().getConfiguration().locale;
 
+        ttsReader.setTTSReader(this,textView,text,systemLocale);
+
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // TTS 객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
+        ttsReader.ttsRemove();
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
