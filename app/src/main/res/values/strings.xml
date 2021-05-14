@@ -76,5 +76,6 @@
     <string name="jong">종목</string>
     <string name="lev">단계</string>
     <string name="tim">횟수</string>
+    <string name="one_more">뒤로가기 버튼을 한번 더 누르면 종료됩니다.</string>
     <string name="day__time">&#160;&#160;&#160;&#160;&#160;&#160;날짜&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;시간&#160;&#160;&#160;&#160;&#160;&#160;</string>
 </resources>

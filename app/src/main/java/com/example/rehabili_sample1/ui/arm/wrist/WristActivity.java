@@ -44,6 +44,7 @@ public class WristActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // type 값을 가지고 다음 액티비티 Set으로 이동
+                ttsReader.ttsStop();
                 Intent intent = new Intent(WristActivity.this, Set.class);
                 intent.putExtra("type", type);
                 startActivity(intent);

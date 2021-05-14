@@ -221,6 +221,8 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                 intent.putExtra("type", type);
                 intent.putExtra("goalNumber", goalNumber);
                 startActivity(intent);
+                finish();
+
             }
         };
 

@@ -41,21 +41,31 @@ public class TTSReader extends AppCompatActivity{
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sw==0) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
-                    else
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                    sw=1;
-                }else {
-                    tts.stop();
-                    sw=0;
+                try {
+                    if (sw==0) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+                        else
+                            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        sw=1;
+                    }else {
+                        tts.stop();
+                        sw=0;
+                    }
+                }catch (NullPointerException e){
+                    e.printStackTrace();
                 }
             }
         });
 
     }
-
+    public void ttsStop(){
+        try {
+            tts.stop();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+    }
     //액티비티가 사라지면 메소드를 불러와서 tts를 소멸
     public void ttsRemove(){
         if(tts != null){

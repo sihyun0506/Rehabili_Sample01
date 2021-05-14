@@ -89,6 +89,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         showGoalNumber = findViewById(R.id.showGoalNumber);
         showMessages = findViewById(R.id.textOut);
 
+
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
         type = intent.getStringExtra("type");
@@ -219,6 +220,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                 intent.putExtra("type", type);
                 intent.putExtra("goalNumber", goalNumber);
                 startActivity(intent);
+                finish();
             }
         };
         thread.start();

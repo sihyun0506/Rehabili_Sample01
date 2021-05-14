@@ -2,6 +2,7 @@ package com.example.rehabili_sample1.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,7 @@ public class Finish extends AppCompatActivity {
                 Intent intent = new Intent(Finish.this, Set.class);
                 intent.putExtra("type",type);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -55,7 +57,8 @@ public class Finish extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Finish.this, MainActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, Activity.RESULT_OK);
+                finish();
             }
         });
     }
