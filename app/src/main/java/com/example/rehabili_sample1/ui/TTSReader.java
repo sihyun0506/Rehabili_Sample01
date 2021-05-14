@@ -17,10 +17,8 @@ public class TTSReader extends AppCompatActivity{
     private TextToSpeech tts;
     int sw = 0;
     TextView view;
-    String text;
 
     public void setTTSReader(Context context, TextView textView, String text, Locale systemLocale ){
-        this.text = text;
         tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -57,46 +55,8 @@ public class TTSReader extends AppCompatActivity{
                 }catch (NullPointerException e){
                     e.printStackTrace();
                 }
-
-
             }
         });
-
-    }
-
-    public void setTTSReader(Context context, String text, Locale systemLocale ) {
-        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    //사용할 언어를 설정
-                    int result = tts.setLanguage(systemLocale);
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-
-                    } else {
-                        //음성 톤
-                        tts.setPitch(1);
-                        //읽는 속도
-                        tts.setSpeechRate(1);
-
-                    }
-                }
-            }
-        });
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
-        else
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-
-    }
-
-    public void ttsStop(){
-        try{
-            tts.stop();
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
 
     }
 
