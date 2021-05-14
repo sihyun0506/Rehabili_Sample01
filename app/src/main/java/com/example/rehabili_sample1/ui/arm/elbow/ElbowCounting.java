@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.rehabili_sample1.DbOpenHelper;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.Finish;
+import com.example.rehabili_sample1.ui.TTSReader;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,7 +54,9 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     private double minArk = 00;
     boolean isThread = false;
     Thread thread;
-    private TextToSpeech tts;              // TTS 변수 선언
+
+    int wrongAngleCount = 0;
+    TTSReader ttsReader;              // TTS 변수 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,9 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         showCountNumber = findViewById(R.id.showCountNumber);
         showGoalNumber = findViewById(R.id.showGoalNumber);
         showMessages = findViewById(R.id.textOut);
+
+        //tts
+        ttsReader = new TTSReader();
 
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
@@ -100,8 +106,10 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                     sleep(100); // 센서가 최초에 0부터 시작하므로 처음부터 Gx<min 에서 카운트 되는 걸 막기 위해 0.1초의 딜레이를 줌
                     handler.sendEmptyMessage(0);
                     while (firstCheck) {
-                        sleep(100);
+                        sleep(50);
                         warningVibrate();
+                        sleep(50);
+                        wrongSpeech();
                         if (Gx < minArk && Gy < 15 && Gy > -15) {
                             count = 1;
                             mVib.vibrate(300); // 진동
@@ -122,6 +130,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             while (count < countCheck) {
                                 sleep(100);
                                 warningVibrate();
+                                wrongSpeech();
                                 if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >= 0) {
                                     mVib.vibrate(300); // 진동
                                     count++;
@@ -133,6 +142,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             while (count < countCheck) {
                                 sleep(100);
                                 warningVibrate();
+                                wrongSpeech();
                                 if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >= 0) {
                                     mVib.vibrate(300); // 진동
                                     count++;
@@ -174,10 +184,10 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 showMessages.setText(R.string.armdown);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.armup);
-                showCountNumber.setText(String.valueOf(count/2));
+                showCountNumber.setText(String.valueOf(count / 2));
             }
         }
     };
@@ -210,6 +220,13 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // 뒤로가기 방지
     @Override
     public void onBackPressed() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ttsReader.ttsRemove();
 
     }
 
@@ -261,8 +278,20 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
         if (Gy < -15 || Gy > 15)
-            mVib.vibrate(1);
+            wrongAngleCount++;
+        mVib.vibrate(1);
     }
+
+    // 자세가 8초간 바르지 않을 경우 음성출력
+    private void wrongSpeech() {
+        if (wrongAngleCount == 80) {
+            wrongAngleCount = 0;
+            String text = getString(R.string.wrongText);
+            Locale systemLocale = getResources().getConfiguration().locale;
+            ttsReader.setTTSReader(this, text, systemLocale);
+        }
+    }
+
 
     // 현재 시간 생성
     public String genDateTime() {

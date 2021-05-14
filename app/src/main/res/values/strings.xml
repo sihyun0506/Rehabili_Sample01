@@ -10,6 +10,7 @@
     <string name="wristup">손목을 세워주세요</string>
     <string name="griphard">힘주어 꽉 쥐세요</string>
     <string name="gripsoft">힘을 풀어 주세요</string>
+    <string name="wrongText">자세가 잘못되었습니다. 화면의 이미지를 참고하여 휴대폰을 다시 잡아주세요. 혹은 올바른 자세로 운동 해 주세요.</string>
     <string name="elbow">팔 구부렸다 펴기</string>
     <string name="elbow_text">&#160;[ 굴곡 신전 운동 ]
         &#160;휴대폰을 영상과 같이 잡고 가능한 수평을 유지한 채로 팔을 움직여 주세요.

@@ -57,6 +57,7 @@
     <string name="lev">Level</string>
     <string name="jong">Type</string>
     <string name="day__time">&#160;&#160;&#160;&#160;&#160;Day&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Time&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="wrongText">Position miss has detected. Please hold the phone again by referring to the image on the screen. Or  do exercis with correct position.</string>
 
 
 </resources>
