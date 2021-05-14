@@ -109,7 +109,9 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                         sleep(50);
                         warningVibrate();
                         sleep(50);
-                        wrongSpeech();
+                        if (wrongAngleCount == 5) {
+                           wrongSpeech();
+                        }
                         if (Gx < minArk && Gy < 15 && Gy > -15) {
                             count = 1;
                             mVib.vibrate(300); // 진동
@@ -123,6 +125,8 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                             minmaxflag = false;     // 다음에 체크할 숫자 확인
                             firstCheck = false;
                         }
+
+
                     }
                     while (count < 2 * goal) {
                         int countCheck = count + 1;
@@ -172,11 +176,11 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
                 intent.putExtra("type", type);
                 intent.putExtra("goalNumber", goalNumber);
                 startActivity(intent);
+                finish();
             }
         };
 
         thread.start();
-
     }
 
     private Handler handler = new Handler() {
@@ -277,19 +281,18 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     // y축 기울기에 따라 바르지 않은 자세 경고 진동출력(빠르고 약한 진동)
     // 기능 실행시 항상 유지되도록 해야함
     public void warningVibrate() {
-        if (Gy < -15 || Gy > 15)
+        if (Gy < -15 || Gy > 15) {
             wrongAngleCount++;
-        mVib.vibrate(1);
+            mVib.vibrate(1);
+        }
     }
 
     // 자세가 8초간 바르지 않을 경우 음성출력
     private void wrongSpeech() {
-        if (wrongAngleCount == 80) {
-            wrongAngleCount = 0;
-            String text = getString(R.string.wrongText);
-            Locale systemLocale = getResources().getConfiguration().locale;
-            ttsReader.setTTSReader(this, text, systemLocale);
-        }
+        wrongAngleCount = 0;
+        String text = "안녕하세요";
+        Locale systemLocale = getResources().getConfiguration().locale;
+        ttsReader.setTTSReader(ElbowCounting.this, text, systemLocale);
     }
 
 

@@ -17,8 +17,10 @@ public class TTSReader extends AppCompatActivity{
     private TextToSpeech tts;
     int sw = 0;
     TextView view;
+    String text;
 
     public void setTTSReader(Context context, TextView textView, String text, Locale systemLocale ){
+        this.text = text;
         tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -41,16 +43,22 @@ public class TTSReader extends AppCompatActivity{
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sw==0) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
-                    else
-                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-                    sw=1;
-                }else {
-                    tts.stop();
-                    sw=0;
+                try {
+                    if (sw==0) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+                        else
+                            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        sw=1;
+                    }else {
+                        tts.stop();
+                        sw=0;
+                    }
+                }catch (NullPointerException e){
+                    e.printStackTrace();
                 }
+
+
             }
         });
 
@@ -82,8 +90,14 @@ public class TTSReader extends AppCompatActivity{
             tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 
     }
+
     public void ttsStop(){
-        tts.stop();
+        try{
+            tts.stop();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
     }
 
     //액티비티가 사라지면 메소드를 불러와서 tts를 소멸

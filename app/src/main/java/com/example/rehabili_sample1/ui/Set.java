@@ -89,6 +89,7 @@ public class Set extends AppCompatActivity {
                         intent.putExtra("goalNumber", goalNumber);
                         intent.putExtra("level", level);
                         startActivity(intent);
+                        finish();
                     } else if (type.equals(getString(R.string.wrist))) {
                         Intent intent;
                         if (radioValue.equals(getString(R.string.left))) {
@@ -100,6 +101,7 @@ public class Set extends AppCompatActivity {
                         intent.putExtra("goalNumber", goalNumber);
                         intent.putExtra("level", level);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }

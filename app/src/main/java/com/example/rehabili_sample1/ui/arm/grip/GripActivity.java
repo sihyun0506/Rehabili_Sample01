@@ -46,9 +46,12 @@ public class GripActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // type 값을 가지고 다음 액티비티 gripCounting으로 이동
+                ttsReader.ttsStop();
                 Intent intent = new Intent(GripActivity.this, GripCounting.class);
                 intent.putExtra("type", type);
                 startActivity(intent);
+
+
             }
         });
 

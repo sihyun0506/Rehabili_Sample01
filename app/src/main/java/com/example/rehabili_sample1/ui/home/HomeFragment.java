@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
 import com.example.rehabili_sample1.ui.arm.elbow.ElbowActivity;
 import com.example.rehabili_sample1.ui.arm.grip.GripActivity;
@@ -20,7 +21,7 @@ import com.example.rehabili_sample1.ui.arm.wrist.WristActivity;
 public class HomeFragment extends Fragment {
 
     String name;
-
+    MainActivity mainActivity;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WristActivity.class);
                 startActivity(intent);
+                //getActivity().getSupportFragmentManager().beginTransaction().remove(HomeFragment.this).commit();
             }
         });
         gripButton.setOnClickListener(new View.OnClickListener() {

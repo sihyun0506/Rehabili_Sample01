@@ -156,6 +156,8 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
                 intent.putExtra("type", type);
                 intent.putExtra("goalNumber", goalNumber);
                 startActivity(intent);
+                finish();
+
             }
         };
 

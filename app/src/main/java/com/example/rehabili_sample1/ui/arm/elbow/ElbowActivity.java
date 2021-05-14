@@ -58,7 +58,9 @@ public class ElbowActivity extends AppCompatActivity {
                 // type 값을 가지고 다음 액티비티 Set으로 이동
                 Intent intent = new Intent(ElbowActivity.this, Set.class);
                 intent.putExtra("type", type);
+                ttsReader.ttsStop();
                 startActivity(intent);
+                finish();
             }
         });
 

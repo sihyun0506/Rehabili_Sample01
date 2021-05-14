@@ -58,6 +58,9 @@ public class GripCounting extends AppCompatActivity {
                         handler.sendEmptyMessage(1);
                         mVib.vibrate(300); // 진동
                         sleep(5000);
+                        if (count>20) {
+                            return;
+                        }
                         handler.sendEmptyMessage(0);
                         mVib.vibrate(300); // 진동
                         sleep(5000);
@@ -66,15 +69,18 @@ public class GripCounting extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                if (count == 20) {
+                    // DB에 운동기록 입력
+                    insertDB(type, "Lv  -", 20);
 
-                // DB에 운동기록 입력
-                insertDB(type, "Lv  -", 20);
+                    // 다음 액티비티 ElbowFinish 로 이동 (type과 goal 전송)
+                    Intent intent = new Intent(GripCounting.this, Finish.class);
+                    intent.putExtra("type", type);
+                    intent.putExtra("goalNumber", goalNumber);
+                    startActivity(intent);
+                }
+                finish();
 
-                // 다음 액티비티 ElbowFinish 로 이동 (type과 goal 전송)
-                Intent intent = new Intent(GripCounting.this, Finish.class);
-                intent.putExtra("type", type);
-                intent.putExtra("goalNumber", goalNumber);
-                startActivity(intent);
             }
         };
         thread.start();
@@ -98,7 +104,8 @@ public class GripCounting extends AppCompatActivity {
     // 뒤로가기 방지
     @Override
     public void onBackPressed() {
-
+        count = 200;
+        super.onBackPressed();
     }
 
     // 현재 시간 생성
