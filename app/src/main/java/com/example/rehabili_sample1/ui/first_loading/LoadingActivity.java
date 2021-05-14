@@ -2,13 +2,20 @@ package com.example.rehabili_sample1.ui.first_loading;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.widget.Toast;
 
 import com.example.rehabili_sample1.MainActivity;
 import com.example.rehabili_sample1.R;
 
+import java.util.Locale;
+
 public class LoadingActivity extends Activity {
+
+    String text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +23,7 @@ public class LoadingActivity extends Activity {
 
         Handler handler = new Handler();
         handler.postDelayed(new splashhandler(), 2000);
+
 
     }
 

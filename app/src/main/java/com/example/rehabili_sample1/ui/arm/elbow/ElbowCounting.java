@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.widget.TextView;
 
 import com.example.rehabili_sample1.DbOpenHelper;
@@ -20,8 +21,10 @@ import com.example.rehabili_sample1.ui.Finish;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static java.lang.Math.atan;
+import static android.speech.tts.TextToSpeech.ERROR;
 
 public class ElbowCounting extends AppCompatActivity implements SensorEventListener {
 
@@ -50,6 +53,7 @@ public class ElbowCounting extends AppCompatActivity implements SensorEventListe
     private double minArk = 00;
     boolean isThread = false;
     Thread thread;
+    private TextToSpeech tts;              // TTS 변수 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
