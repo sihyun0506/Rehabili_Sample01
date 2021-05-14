@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.speech.tts.TextToSpeech;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.example.rehabili_sample1.ui.arm.elbow.ElbowCounting;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class GripCounting extends AppCompatActivity {
 
@@ -30,11 +32,52 @@ public class GripCounting extends AppCompatActivity {
     private TextView showCountNumber;
     boolean isThread = false;
     Thread thread;
+    private TextToSpeech tts;
+    private TextToSpeech tts2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grip_counting);
+
+        // tts
+        tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
+        // tts2
+        tts2 = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    Locale systemLocale = getResources().getConfiguration().locale;
+                    int result = tts.setLanguage(systemLocale);
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    } else {
+                        //음성 톤
+                        tts.setPitch(1);
+                        //읽는 속도
+                        tts.setSpeechRate(1);
+
+                    }
+                }
+            }
+        });
 
         //Set에서 받아온 값으로 type과 level과 goalNumber를 설정
         Intent intent = getIntent();
@@ -93,10 +136,12 @@ public class GripCounting extends AppCompatActivity {
                 showMessages.setText(R.string.griphard);
                 showImages.setImageResource(R.drawable.hand_tight);
                 showCountNumber.setText(String.valueOf(count));
+                tts.speak(getString(R.string.griphard),TextToSpeech.QUEUE_FLUSH,null);
             } else if (msg.what == 1) {
                 showMessages.setText(R.string.gripsoft);
                 showImages.setImageResource(R.drawable.hand_loose);
                 showCountNumber.setText(String.valueOf(count));
+                tts2.speak(getString(R.string.gripsoft),TextToSpeech.QUEUE_FLUSH,null);
             }
         }
     };
