@@ -26,7 +26,7 @@ public class ElbowActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
-    private String url = "https://www.youtube.com/embed/iA5K3X29lrA";
+    private String url = "https://www.youtube.com/embed/AtVGBPSnfv0";
     String text;
     TTSReader ttsReader;
 

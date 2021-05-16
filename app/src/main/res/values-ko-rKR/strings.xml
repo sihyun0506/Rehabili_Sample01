@@ -48,7 +48,7 @@
     <string name="under50">50회 이하의 값을 입력하세요</string>
     <string name="putIdName">ID와 이름을 입력하세요</string>
     <string name="remove_history">재활 기록 삭제</string>
-    <string name="remove_really">재활기록을 삭제하시겠습니까? /n 모든 기록이 삭제됩니다.</string>
+    <string name="remove_really">재활기록을 삭제하시겠습니까? \n모든 기록이 삭제됩니다.</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
     <string name="removed">삭제되었습니다.</string>

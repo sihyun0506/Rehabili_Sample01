@@ -22,7 +22,7 @@ public class WristActivity extends AppCompatActivity {
     private TextView exerciseType;
     private String type;
     private WebView webView;
-    private String url = "https://www.youtube.com/embed/FE2VFt3WJRY";
+    private String url = "https://www.youtube.com/embed/db7IF7viI_o";
     String text;
     TTSReader ttsReader;
 

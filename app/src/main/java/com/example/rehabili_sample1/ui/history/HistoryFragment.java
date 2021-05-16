@@ -37,40 +37,6 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
     static ArrayList<String> arrayData = new ArrayList<String>();
     private DbOpenHelper mDbOpenHelper;
 
-    /* DB로 짜자... shared preference로 짜려고 한건 미친 짓이었다.
-    // count는 intent 받을 것
-//    String[] historyString = new String[count];
-
-    // MainActivity에서 shared로 선언해주는게 맞을듯
-    // 정보저장용 ArrayList
-    ArrayList<History> historyList = new ArrayList<>();
-
-    // History에서 정보를 받아옴
-    for(int i = 0; i < historyList.size(); i++){
-        History history = historyList.get(i);
-    }
-    // (출력을 위해) 받아온 정보를 문자열의 배열로 저장
-    String historyString;
-
-    // ExerciseType 입력
-    if(History get(getExcerciseType()) == 1){
-        historyS = historyS + "팔꿈치 구부리기";
-    }else if(){
-
-    }else{
-
-    }
-    // ExerciseLevel 입력
-
-    // ExerciseTimes 입력
-
-
-    // 문자열 출력용 ArrayList
-    ArrayList<String> historyString = new ArrayList<>();
-
-
-     */
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

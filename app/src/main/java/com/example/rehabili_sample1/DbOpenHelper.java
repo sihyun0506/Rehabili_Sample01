@@ -38,10 +38,6 @@ public class DbOpenHelper {
         }
     }
 
-//    public DbOpenHelper(HistoryFragment notificationsFragment) {
-//        this.mNFrag = notificationsFragment;
-//    }
-
     public DbOpenHelper(Context context) {
         this.mCtx = context;
     }
