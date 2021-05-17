@@ -156,6 +156,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                         }
                         // 올바른 각도로 돌아올 시 음성 조기 종료
                         if (Gy < 15 && Gy > -15 && Gz >= 0) {
+                            wrongAngleCount = 0;
                             tts.stop();
                         }
                         if (Gx < minArk && Gy < 15 && Gy > -15) {
@@ -188,6 +189,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                                 }
                                 // 올바른 각도로 돌아올 시 음성 조기 종료
                                 if (Gy < 15 && Gy > -15 && Gz >= 0) {
+                                    wrongAngleCount = 0;
                                     tts.stop();
                                 }
                                 if (Gx > maxArk && Gy < 15 && Gy > -15 && Gz >= 0) {
@@ -211,6 +213,7 @@ public class ElbowCountingRight extends AppCompatActivity implements SensorEvent
                                 }
                                 // 올바른 각도로 돌아올 시 음성 조기 종료
                                 if (Gy < 15 && Gy > -15 && Gz >= 0) {
+                                    wrongAngleCount = 0;
                                     tts.stop();
                                 }
                                 if (Gx < minArk && Gy < 15 && Gy > -15 && Gz >= 0) {

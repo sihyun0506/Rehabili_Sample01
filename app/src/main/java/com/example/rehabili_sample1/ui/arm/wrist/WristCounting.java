@@ -174,7 +174,9 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                             }
                             // 올바른 각도로 돌아올 시 음성 조기 종료
                             if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                wrongAngleCount = 0;
                                 tts.stop();
+
                             }
                             // 정상동작시 진동 출력 후 카운트
                             if (Gz < 10 && Gz > -10 && Gx > 20 && Gx < 70 && Gy > 0) {
@@ -199,6 +201,7 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                             }
                             // 올바른 각도로 돌아올 시 음성 조기 종료
                             if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                wrongAngleCount = 0;
                                 tts.stop();
                             }
                             // 정상동작시 진동 출력 후 카운트

@@ -173,6 +173,7 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
                             }
                             // 올바른 각도로 돌아올 시 음성 조기 종료
                             if (Gx < -20 && Gx > -70 && Gy > 0) {
+                                wrongAngleCount = 0;
                                 tts.stop();
                             }
                             if (Gz < 10 && Gz > -10 && Gx > -70 && Gx < -20 && Gy > 0) {
@@ -197,6 +198,7 @@ public class WristCountingRight extends AppCompatActivity implements SensorEvent
                             }
                             // 올바른 각도로 돌아올 시 음성 조기 종료
                             if (Gx < 70 && Gx > 20 && Gy > 0) {
+                                wrongAngleCount = 0;
                                 tts.stop();
                             }
                             if (rollDegree < minArk && Gx > -70 && Gx < -20 && Gy > 0) {
