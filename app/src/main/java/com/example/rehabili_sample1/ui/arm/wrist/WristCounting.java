@@ -204,6 +204,10 @@ public class WristCounting extends AppCompatActivity implements SensorEventListe
                                 wrongAngleCount = 0;
                                 tts.stop();
                             }
+                            // Gz에 따른 roll 값 보정(드리프트현상이 일정 각도를 넘어가 카운트 안되는 현상이 발생시 Gz에 따라 roll을 0으로 수정)
+                            if (Gz < 8 && Gz > -8) {
+                                roll = 0;
+                            }
                             // 정상동작시 진동 출력 후 카운트
                             if (rollDegree < minArk && Gx > 20 && Gx < 70 && Gy > 0) {
                                 count++;
