@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
     defaultConfig {
-        applicationId "com.example.rehabili_sample1"
+        applicationId "com.rehabili.rehabili_sample1"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

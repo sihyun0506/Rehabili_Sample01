@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rehabili_sample1">
+    package="com.rehabili.rehabili_sample1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -12,21 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_rehabili_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rehabili_sample1">
-        <activity android:name=".ui.arm.wrist.WristCountingRight"></activity>
-        <activity android:name=".ui.arm.elbow.ElbowCountingRight" />
-        <activity android:name=".ui.arm.grip.GripCounting" />
-        <activity android:name=".ui.arm.grip.GripActivity" />
-        <activity android:name=".Appinfo" />
-        <activity android:name=".ui.user.UserEditActivity" />
-        <activity android:name=".ui.Set" />
-        <activity android:name=".ui.Finish" />
-        <activity android:name=".ui.arm.elbow.ElbowCounting" />
-        <activity android:name=".ui.arm.elbow.ElbowActivity" />
-        <activity android:name=".ui.arm.wrist.WristCounting" />
-        <activity android:name=".ui.arm.wrist.WristActivity" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.wrist.WristCountingRight"></activity>
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.elbow.ElbowCountingRight" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.grip.GripCounting" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.grip.GripActivity" />
+        <activity android:name="com.rehabili.rehabili_sample1.Appinfo" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.user.UserEditActivity" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.Set" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.Finish" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.elbow.ElbowCounting" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.elbow.ElbowActivity" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.wrist.WristCounting" />
+        <activity android:name="com.rehabili.rehabili_sample1.ui.arm.wrist.WristActivity" />
         <!-- loading screen -->
         <activity
-            android:name=".ui.first_loading.LoadingActivity"
+            android:name="com.rehabili.rehabili_sample1.ui.first_loading.LoadingActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -37,7 +37,7 @@
         </activity>
         <!-- main -->
         <activity
-            android:name=".MainActivity"
+            android:name="com.rehabili.rehabili_sample1.MainActivity"
             android:label="@string/app_name" />
     </application>
 
