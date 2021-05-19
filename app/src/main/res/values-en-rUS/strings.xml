@@ -59,6 +59,9 @@
     <string name="day__time">&#160;&#160;&#160;&#160;&#160;Day&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Time&#160;&#160;&#160;&#160;&#160;&#160;</string>
     <string name="wrongText">Position miss has detected. Please hold the phone again by referring to the image on the screen. Or  do exercis with correct position.</string>
     <string name="one_more">Finish if you press backbutton one more</string>
+    <string name="ver_info">Version</string>
+    <string name="develop_tool">Develope Tool</string>
+    <string name="release_date">Release Date</string>
 
 
 </resources>

@@ -24,7 +24,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="40dp"
-        android:text="버전 정보"
+        android:text="@string/ver_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -35,7 +35,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
-        android:text="개발 도구"
+        android:text="@string/develop_tool"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -46,7 +46,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="20dp"
-        android:text="배포 일자"
+        android:text="@string/release_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -102,7 +102,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
-        android:text="2021. 05. XX"
+        android:text="2021. 05. 19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 

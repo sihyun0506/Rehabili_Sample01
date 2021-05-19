@@ -36,6 +36,9 @@
     <string name="history">재활 기록 확인</string>
     <string name="main_page">메인으로 이동</string>
     <string name="app_info">앱 정보</string>
+    <string name="ver_info">버전 정보</string>
+    <string name="develop_tool">개발 도구</string>
+    <string name="release_date">배포 일자</string>
     <string name="must">필수</string>
     <string name="app_info_content">&#160;팔 기브스 제거 후 재활 운동을 하는데 도움을 주는 재활 도우미 어플리케이션입니다.          &#160;이용해주셔서 감사합니다.</string>
     <string name="welcome">&#160;님, 힘내세요!</string>

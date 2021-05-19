@@ -59,5 +59,8 @@
     <string name="day__time">&#160;&#160;&#160;&#160;&#160;&#160;날짜&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;시간&#160;&#160;&#160;&#160;&#160;&#160;</string>
     <string name="wrongText">자세가 잘못되었습니다. 화면의 이미지를 참고하여 휴대폰을 다시 잡아주세요. 혹은 올바른 자세로 운동 해 주세요.</string>
     <string name="one_more">뒤로가기 버튼을 한번 더 누르면 종료됩니다.</string>
+    <string name="ver_info">버전 정보</string>
+    <string name="develop_tool">개발 도구</string>
+    <string name="release_date">배포 일자</string>
 
 </resources>

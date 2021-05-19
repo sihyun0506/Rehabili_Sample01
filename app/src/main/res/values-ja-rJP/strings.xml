@@ -68,5 +68,8 @@
     <string name="day__time">&#160;&#160;&#160;&#160;&#160;&#160;日付&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;時刻&#160;&#160;&#160;&#160;&#160;&#160;</string>
     <string name="wrongText">姿勢が間違っています。画面のイメージに合わせ形態を握り直してください。または正しい姿勢で運動をしてください。</string>
     <string name="one_more">もう一回押すと終了します。</string>
+    <string name="ver_info">Version</string>
+    <string name="develop_tool">Develope Tool</string>
+    <string name="release_date">Release Date</string>
 
 </resources>
