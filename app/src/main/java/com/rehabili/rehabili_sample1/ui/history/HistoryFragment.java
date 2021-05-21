@@ -31,7 +31,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
     NavController navController;
     String name;
     // BD 오름/ 내림 차순 정렬을 위한 값
-    Boolean sign1 = true, sign2 = true, sign3 = true, sign4 = true;
+    Boolean sign1 = false, sign2 = false, sign3 = false, sign4 = false;
     ArrayAdapter<String> arrayAdapter;
     static ArrayList<String> arrayIndex = new ArrayList<String>();
     static ArrayList<String> arrayData = new ArrayList<String>();
@@ -178,7 +178,6 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
             case R.id.remove:
                 show();
-//                showDatabase("datetime");
         }
     }
 
